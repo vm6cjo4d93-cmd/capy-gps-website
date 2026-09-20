@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Capy GPS Simulator — Android GPS 位置模擬工具</title>
+<meta name="description" content="Capy GPS Simulator：AI 路線生成、GPS 漂移引擎、離線地圖與多裝置同步，專為開發測試與 LBS 應用驗證打造的 Android GPS 模擬工具。">
+<link rel="icon" type="image/png" href="assets/img/icon.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">
+      <img src="assets/img/icon.png" alt="Capy GPS Simulator" class="brand-icon">
+      <span>Capy GPS Simulator</span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#features" data-i18n-nav="features"></a>
+      <a href="#screenshots" data-i18n-nav="screenshots"></a>
+      <a href="#pricing" data-i18n-nav="pricing"></a>
+      <a href="#faq" data-i18n-nav="faq"></a>
+    </nav>
+    <div class="nav-actions">
+      <select id="langSelect" class="lang-select" aria-label="Language"></select>
+      <a id="navDownloadBtn" href="#" target="_blank" rel="noopener" class="btn btn-primary btn-sm" data-i18n-nav="download"></a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <span class="badge" id="heroBadge"></span>
+        <h1 id="heroTitle"></h1>
+        <p class="hero-sub" id="heroSubtitle"></p>
+        <div class="hero-cta-row">
+          <a id="heroCtaPrimary" href="#" target="_blank" rel="noopener" class="btn btn-primary btn-lg"></a>
+          <a href="#features" id="heroCtaSecondary" class="btn btn-ghost btn-lg"></a>
+        </div>
+        <div class="trust-row" id="trustRow"></div>
+      </div>
+      <div class="hero-art">
+        <div class="hero-art-blob"></div>
+        <img src="assets/img/mascot-car.png" alt="Capy GPS Simulator mascot" class="hero-mascot">
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="section" id="features">
+    <div class="section-inner">
+      <h2 id="featuresTitle"></h2>
+      <p class="section-sub" id="featuresSubtitle"></p>
+      <div class="grid grid-4" id="featuresGrid"></div>
+    </div>
+  </section>
+
+  <!-- SCREENSHOTS -->
+  <section class="section section-alt" id="screenshots">
+    <div class="section-inner">
+      <h2 id="screensTitle"></h2>
+      <p class="section-sub" id="screensSubtitle"></p>
+      <div class="screens-row" id="screensRow"></div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section class="section" id="why">
+    <div class="section-inner">
+      <h2 id="whyTitle"></h2>
+      <div class="grid grid-2" id="whyGrid"></div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="section section-alt" id="pricing">
+    <div class="section-inner">
+      <h2 id="pricingTitle"></h2>
+      <p class="section-sub" id="pricingSubtitle"></p>
+      <div class="pricing-row" id="pricingRow"></div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="section-inner section-narrow">
+      <h2 id="faqTitle"></h2>
+      <div class="faq-list" id="faqList"></div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-banner">
+    <div class="cta-banner-inner">
+      <img src="assets/img/mascot-welcome.png" alt="" class="cta-mascot">
+      <div>
+        <h2 id="ctaTitle"></h2>
+        <p id="ctaSubtitle"></p>
+      </div>
+      <a id="ctaButton" href="#" target="_blank" rel="noopener" class="btn btn-primary btn-lg"></a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="assets/img/mascot-wave.png" alt="" class="footer-mascot">
+        <div>
+          <strong>Capy GPS Simulator</strong>
+          <p id="footerTagline"></p>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="https://vm6cjo4d93-cmd.github.io/capy-gps-privacy/privacy.html" target="_blank" rel="noopener" id="footerPrivacy"></a>
+        <a href="https://vm6cjo4d93-cmd.github.io/capy-gps-privacy/terms.html" target="_blank" rel="noopener" id="footerTerms"></a>
+        <a href="https://play.google.com/store/apps/details?id=com.gpssimulator.app" target="_blank" rel="noopener" id="footerPlayStore"></a>
+      </div>
+    </div>
+    <p class="footer-disclaimer" id="footerDisclaimer"></p>
+    <p class="footer-copy" id="footerCopy"></p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
