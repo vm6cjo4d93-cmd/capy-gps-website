@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vm6cjo4d93-cmd.github.io/capy-gps-website/sitemap.xml

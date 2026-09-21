@@ -17,11 +17,17 @@ const LANG_META = {
 
 const FEATURE_ICONS = ["✨", "📡", "✏️", "🕹️", "🗺️", "📊", "🔗", "🌐"];
 const WHY_ICONS = ["🎯", "🛠️", "🔄", "🔒"];
+const USECASE_ICONS = ["🧪", "🔁", "🗺️", "📶", "📼"];
+
+// 這裡放你自己的推薦連結：image（圖片路徑）、link（網址）、name/desc（留空則顯示各語言的預設「敬請期待」文字）
+const RELATED_PRODUCTS = [
+  { image: "assets/img/icon.png", link: "#", name: "", desc: "" },
+];
 
 const T = {
 
 zh: {
-  nav: { features: "功能", screenshots: "實際畫面", pricing: "方案", faq: "常見問題", download: "免費下載" },
+  nav: { features: "功能", usecases: "使用情境", screenshots: "實際畫面", pricing: "方案", faq: "常見問題", download: "免費下載" },
   hero: {
     badge: "Android GPS 位置模擬工具",
     title: "全球任何地點，一鍵傳送",
@@ -42,6 +48,27 @@ zh: {
       { title: "分析儀表板", desc: "完整記錄每次模擬的路徑、速度與電量消耗，可匯出 HTML 報告與 GPX 檔案。" },
       { title: "LAN 多裝置同步", desc: "透過區域網路同步多台裝置的 GPS 位置，適合多裝置協同測試。" },
       { title: "10 種語言介面", desc: "介面支援中、英、日、韓、西、葡、印地、阿拉伯、義、泰共 10 種語言。" },
+    ],
+  },
+  how: {
+    title: "怎麼運作",
+    subtitle: "從路線到模擬定位，只要四個步驟",
+    steps: [
+      { title: "選擇路線", desc: "AI 自動生成、地圖上點擊繪製、匯入 GPX，或直接貼上座標清單。" },
+      { title: "設定速度與漂移", desc: "選擇更新頻率與移動速度，也可以加入 GPS 漂移，讓訊號更貼近真實情況。" },
+      { title: "啟動模擬", desc: "點擊開始，Foreground Service 接管 GPS 與 Network 兩個定位來源。" },
+      { title: "App 讀到模擬座標", desc: "任何讀取定位的 App 都會即時看到你設定的模擬座標。" },
+    ],
+  },
+  useCases: {
+    title: "適合的使用情境",
+    subtitle: "為開發測試與 LBS 應用驗證打造的五大情境",
+    items: [
+      { title: "QA / LBS 應用測試", desc: "驗證定位相關功能在不同座標下的行為是否正確。" },
+      { title: "路線模擬與回放", desc: "重複播放同一條路線，執行一致且可重複的測試。" },
+      { title: "GIS 行為模擬", desc: "模擬地理資訊系統在不同區域的定位反應。" },
+      { title: "GPS 漂移與雜訊測試", desc: "驗證 App 在訊號不穩定時的容錯與重試機制。" },
+      { title: "位置回放（GPX／自訂路線）", desc: "匯入既有 GPX 檔或自訂座標，重現特定的移動軌跡。" },
     ],
   },
   screenshots: {
@@ -88,6 +115,21 @@ zh: {
       { q: "可以隨時取消訂閱嗎？", a: "可以，Pro 訂閱可透過 Google Play 帳戶管理隨時取消，彈性無綁約。" },
     ],
   },
+  whatsNew: {
+    title: "最新更新",
+    subtitle: "持續改進中，以下是近期亮點",
+    items: [
+      "AI 路線生成後立即在地圖上預覽，不用等到開始模擬才看得到",
+      "「更多功能」選單重新分類，找功能更快",
+      "首次使用導覽精簡為 9 個核心步驟",
+      "收藏標記新增健身房／補給站／化石 3 個分類",
+    ],
+  },
+  related: {
+    title: "更多推薦",
+    subtitle: "值得搭配使用的其他資源",
+    placeholder: { name: "敬請期待", desc: "更多推薦內容準備中", cta: "了解更多" },
+  },
   ctaBanner: { title: "準備好開始模擬了嗎？", subtitle: "免費下載，馬上體驗 AI 路線生成", button: "在 Google Play 下載" },
   footer: {
     tagline: "Android GPS 位置模擬工具",
@@ -98,7 +140,7 @@ zh: {
 },
 
 en: {
-  nav: { features: "Features", screenshots: "Screenshots", pricing: "Pricing", faq: "FAQ", download: "Free Download" },
+  nav: { features: "Features", usecases: "Use Cases", screenshots: "Screenshots", pricing: "Pricing", faq: "FAQ", download: "Free Download" },
   hero: {
     badge: "Android GPS Location Simulator",
     title: "Teleport anywhere in the world, one tap",
@@ -119,6 +161,27 @@ en: {
       { title: "Analytics Dashboard", desc: "Full logging of path, speed, and battery usage for every simulation, exportable as HTML reports and GPX files." },
       { title: "LAN Multi-Device Sync", desc: "Sync GPS positions across multiple devices over a local network — ideal for coordinated multi-device testing." },
       { title: "10-Language Interface", desc: "The interface supports Chinese, English, Japanese, Korean, Spanish, Portuguese, Hindi, Arabic, Italian, and Thai." },
+    ],
+  },
+  how: {
+    title: "How It Works",
+    subtitle: "From a route to simulated GPS in four steps",
+    steps: [
+      { title: "Pick a route", desc: "Let AI generate one, draw it on the map, import a GPX file, or paste a list of coordinates." },
+      { title: "Set speed & drift", desc: "Choose the update rate and movement speed, and optionally add GPS drift for more realistic signal noise." },
+      { title: "Start the simulation", desc: "Tap start — a foreground service takes over both the Mock GPS and Network location providers." },
+      { title: "Apps read the simulated location", desc: "Any app that reads your location sees the coordinates you set, updated in real time." },
+    ],
+  },
+  useCases: {
+    title: "Built For These Scenarios",
+    subtitle: "Five common use cases for development testing and LBS verification",
+    items: [
+      { title: "QA / LBS App Testing", desc: "Verify that location-dependent features behave correctly across different coordinates." },
+      { title: "Route Simulation & Playback", desc: "Replay the same route repeatedly to run consistent, repeatable tests." },
+      { title: "GIS Behavior Simulation", desc: "Simulate how a GIS system responds to positioning across different regions." },
+      { title: "GPS Drift & Noise Testing", desc: "Verify how your app handles error tolerance and retries under unstable signal conditions." },
+      { title: "Location Replay (GPX / Custom Routes)", desc: "Import an existing GPX file or custom coordinates to reproduce a specific movement path." },
     ],
   },
   screenshots: {
@@ -165,6 +228,21 @@ en: {
       { q: "Can I cancel my subscription anytime?", a: "Yes. Pro subscriptions can be cancelled anytime through your Google Play account — no long-term commitment." },
     ],
   },
+  whatsNew: {
+    title: "What's New",
+    subtitle: "Actively improving — here are some recent highlights",
+    items: [
+      "AI-generated routes now preview on the map instantly, no need to start simulating first",
+      "Reorganized the \"More\" menu so features are easier to find",
+      "Simplified the first-time tour to 9 core steps",
+      "Added 3 new favorite marker categories: Gym, Aid Station, Fossil",
+    ],
+  },
+  related: {
+    title: "More Recommendations",
+    subtitle: "Other resources worth pairing with this app",
+    placeholder: { name: "Coming soon", desc: "More recommendations are on the way", cta: "Learn more" },
+  },
   ctaBanner: { title: "Ready to start simulating?", subtitle: "Download for free and try AI route generation now", button: "Get it on Google Play" },
   footer: {
     tagline: "Android GPS Location Simulator",
@@ -175,7 +253,7 @@ en: {
 },
 
 ja: {
-  nav: { features: "機能", screenshots: "画面", pricing: "料金", faq: "よくある質問", download: "無料ダウンロード" },
+  nav: { features: "機能", usecases: "活用シーン", screenshots: "画面", pricing: "料金", faq: "よくある質問", download: "無料ダウンロード" },
   hero: {
     badge: "Android GPS 位置シミュレーター",
     title: "世界のどこへでも、ワンタップでテレポート",
@@ -196,6 +274,27 @@ ja: {
       { title: "分析ダッシュボード", desc: "各シミュレーションの経路・速度・バッテリー消費を記録し、HTMLレポートやGPXファイルとしてエクスポート。" },
       { title: "LANマルチデバイス同期", desc: "ローカルネットワーク経由で複数端末のGPS位置を同期。複数端末での協調テストに最適。" },
       { title: "10言語インターフェース", desc: "中国語・英語・日本語・韓国語・スペイン語・ポルトガル語・ヒンディー語・アラビア語・イタリア語・タイ語の10言語に対応。" },
+    ],
+  },
+  how: {
+    title: "使い方",
+    subtitle: "ルートからシミュレーション位置情報まで、たった4ステップ",
+    steps: [
+      { title: "ルートを選ぶ", desc: "AIによる自動生成、地図上での描画、GPXファイルのインポート、座標リストの貼り付けから選べます。" },
+      { title: "速度とドリフトを設定", desc: "更新頻度と移動速度を選択。GPSドリフトを追加すればよりリアルな信号ノイズを再現できます。" },
+      { title: "シミュレーションを開始", desc: "開始をタップすると、フォアグラウンドサービスがMock GPSとNetworkプロバイダの両方を引き継ぎます。" },
+      { title: "アプリが模擬座標を取得", desc: "位置情報を読み取るどのアプリも、設定した模擬座標をリアルタイムで受け取ります。" },
+    ],
+  },
+  useCases: {
+    title: "こんな場面に最適",
+    subtitle: "開発テストとLBS検証のための5つの代表的な活用シーン",
+    items: [
+      { title: "QA / LBSアプリテスト", desc: "異なる座標で位置情報関連機能が正しく動作するか検証します。" },
+      { title: "ルートシミュレーション＆再生", desc: "同じルートを繰り返し再生し、一貫したテストを実施できます。" },
+      { title: "GIS動作シミュレーション", desc: "地域ごとのGISシステムの位置情報応答をシミュレートします。" },
+      { title: "GPSドリフト＆ノイズテスト", desc: "信号が不安定な状況でのアプリのエラー耐性や再試行動作を検証します。" },
+      { title: "位置再生（GPX／カスタムルート）", desc: "既存のGPXファイルやカスタム座標をインポートして、特定の移動軌跡を再現します。" },
     ],
   },
   screenshots: {
@@ -242,6 +341,21 @@ ja: {
       { q: "いつでも解約できますか？", a: "はい。Proサブスクリプションはいつでも Google Play アカウントから解約でき、縛りはありません。" },
     ],
   },
+  whatsNew: {
+    title: "最新アップデート",
+    subtitle: "継続的に改善中。最近の主なハイライトはこちら",
+    items: [
+      "AIルート生成後すぐに地図上でプレビュー可能に、シミュレーション開始を待つ必要なし",
+      "「その他の機能」メニューを再分類し、機能を見つけやすく改善",
+      "初回チュートリアルをコア9ステップに簡素化",
+      "お気に入りマーカーに新しい3カテゴリを追加：ジム／補給ポイント／化石",
+    ],
+  },
+  related: {
+    title: "おすすめ",
+    subtitle: "あわせて使いたいその他のリソース",
+    placeholder: { name: "近日公開", desc: "おすすめコンテンツを準備中です", cta: "詳しく見る" },
+  },
   ctaBanner: { title: "シミュレーションを始めましょう", subtitle: "無料でダウンロードして、AIルート生成をすぐに体験", button: "Google Play で入手" },
   footer: {
     tagline: "Android GPS 位置シミュレーター",
@@ -252,7 +366,7 @@ ja: {
 },
 
 ko: {
-  nav: { features: "기능", screenshots: "스크린샷", pricing: "요금제", faq: "자주 묻는 질문", download: "무료 다운로드" },
+  nav: { features: "기능", usecases: "활용 사례", screenshots: "스크린샷", pricing: "요금제", faq: "자주 묻는 질문", download: "무료 다운로드" },
   hero: {
     badge: "Android GPS 위치 시뮬레이터",
     title: "전 세계 어디든, 탭 한 번으로 이동",
@@ -273,6 +387,27 @@ ko: {
       { title: "분석 대시보드", desc: "매 시뮬레이션의 경로, 속도, 배터리 소모량을 완전히 기록하고 HTML 보고서와 GPX 파일로 내보낼 수 있습니다." },
       { title: "LAN 다중 기기 동기화", desc: "로컬 네트워크를 통해 여러 기기의 GPS 위치를 동기화하여 다중 기기 협업 테스트에 적합합니다." },
       { title: "10개 언어 인터페이스", desc: "중국어, 영어, 일본어, 한국어, 스페인어, 포르투갈어, 힌디어, 아랍어, 이탈리아어, 태국어 총 10개 언어를 지원합니다." },
+    ],
+  },
+  how: {
+    title: "작동 방식",
+    subtitle: "경로부터 시뮬레이션 위치까지, 단 4단계",
+    steps: [
+      { title: "경로 선택", desc: "AI 자동 생성, 지도에서 그리기, GPX 파일 가져오기, 좌표 목록 붙여넣기 중에서 선택하세요." },
+      { title: "속도와 드리프트 설정", desc: "업데이트 빈도와 이동 속도를 선택하고, GPS 드리프트를 추가해 더 현실적인 신호 노이즈를 재현할 수 있습니다." },
+      { title: "시뮬레이션 시작", desc: "시작을 탭하면 포그라운드 서비스가 Mock GPS와 Network 프로바이더를 동시에 제어합니다." },
+      { title: "앱이 시뮬레이션 좌표를 읽음", desc: "위치 정보를 사용하는 모든 앱이 설정한 시뮬레이션 좌표를 실시간으로 받습니다." },
+    ],
+  },
+  useCases: {
+    title: "이런 상황에 적합해요",
+    subtitle: "개발 테스트와 LBS 검증을 위한 5가지 대표 활용 사례",
+    items: [
+      { title: "QA / LBS 앱 테스트", desc: "다양한 좌표에서 위치 기반 기능이 올바르게 동작하는지 검증합니다." },
+      { title: "경로 시뮬레이션 및 재생", desc: "동일한 경로를 반복 재생하여 일관된 테스트를 수행합니다." },
+      { title: "GIS 동작 시뮬레이션", desc: "지역별 GIS 시스템의 위치 응답을 시뮬레이션합니다." },
+      { title: "GPS 드리프트 및 노이즈 테스트", desc: "신호가 불안정한 상황에서 앱의 오류 허용 및 재시도 동작을 검증합니다." },
+      { title: "위치 재생(GPX／커스텀 경로)", desc: "기존 GPX 파일이나 커스텀 좌표를 가져와 특정 이동 경로를 재현합니다." },
     ],
   },
   screenshots: {
@@ -319,6 +454,21 @@ ko: {
       { q: "언제든지 구독을 취소할 수 있나요?", a: "네, Pro 구독은 Google Play 계정 관리에서 언제든지 취소할 수 있으며 별도의 약정이 없습니다." },
     ],
   },
+  whatsNew: {
+    title: "최신 업데이트",
+    subtitle: "지속적으로 개선 중입니다. 최근 주요 변경사항입니다",
+    items: [
+      "AI 경로 생성 후 시뮬레이션 시작 전에도 지도에서 바로 미리보기 가능",
+      "'더 많은 기능' 메뉴를 재분류하여 기능을 더 빠르게 찾을 수 있도록 개선",
+      "최초 튜토리얼을 핵심 9단계로 간소화",
+      "즐겨찾기 마커에 새 카테고리 3개 추가: 헬스장／보급소／화석",
+    ],
+  },
+  related: {
+    title: "추천 콘텐츠",
+    subtitle: "함께 사용하면 좋은 다른 리소스",
+    placeholder: { name: "곧 공개 예정", desc: "추천 콘텐츠를 준비 중입니다", cta: "자세히 보기" },
+  },
   ctaBanner: { title: "시뮬레이션을 시작할 준비가 되셨나요?", subtitle: "무료로 다운로드하고 AI 경로 생성을 바로 체험해보세요", button: "Google Play에서 다운로드" },
   footer: {
     tagline: "Android GPS 위치 시뮬레이터",
@@ -329,7 +479,7 @@ ko: {
 },
 
 es: {
-  nav: { features: "Funciones", screenshots: "Capturas", pricing: "Precios", faq: "Preguntas", download: "Descarga gratis" },
+  nav: { features: "Funciones", usecases: "Casos de uso", screenshots: "Capturas", pricing: "Precios", faq: "Preguntas", download: "Descarga gratis" },
   hero: {
     badge: "Simulador de ubicación GPS para Android",
     title: "Teletranspórtate a cualquier lugar del mundo",
@@ -350,6 +500,27 @@ es: {
       { title: "Panel de análisis", desc: "Registro completo de ruta, velocidad y consumo de batería de cada simulación, exportable como informes HTML y archivos GPX." },
       { title: "Sincronización LAN multidispositivo", desc: "Sincroniza la posición GPS entre varios dispositivos a través de la red local, ideal para pruebas coordinadas." },
       { title: "Interfaz en 10 idiomas", desc: "La interfaz admite chino, inglés, japonés, coreano, español, portugués, hindi, árabe, italiano y tailandés." },
+    ],
+  },
+  how: {
+    title: "Cómo funciona",
+    subtitle: "De la ruta a la ubicación simulada en cuatro pasos",
+    steps: [
+      { title: "Elige una ruta", desc: "Genérala con IA, dibújala en el mapa, importa un archivo GPX o pega una lista de coordenadas." },
+      { title: "Configura velocidad y deriva", desc: "Elige la frecuencia de actualización y la velocidad de movimiento; añade deriva GPS para un ruido de señal más realista." },
+      { title: "Inicia la simulación", desc: "Toca iniciar: un servicio en primer plano toma el control de los proveedores Mock GPS y de red." },
+      { title: "Las apps leen la ubicación simulada", desc: "Cualquier app que lea tu ubicación verá las coordenadas configuradas, actualizadas en tiempo real." },
+    ],
+  },
+  useCases: {
+    title: "Ideal para estos escenarios",
+    subtitle: "Cinco casos de uso comunes para pruebas de desarrollo y verificación LBS",
+    items: [
+      { title: "Pruebas de apps QA / LBS", desc: "Verifica que las funciones basadas en ubicación se comporten correctamente en distintas coordenadas." },
+      { title: "Simulación y repetición de rutas", desc: "Repite la misma ruta varias veces para pruebas consistentes y repetibles." },
+      { title: "Simulación de comportamiento GIS", desc: "Simula cómo responde un sistema GIS al posicionamiento en distintas regiones." },
+      { title: "Pruebas de deriva y ruido GPS", desc: "Verifica cómo tu app tolera errores y reintentos con señal inestable." },
+      { title: "Reproducción de ubicación (GPX / rutas personalizadas)", desc: "Importa un GPX existente o coordenadas personalizadas para reproducir un trayecto específico." },
     ],
   },
   screenshots: {
@@ -396,6 +567,21 @@ es: {
       { q: "¿Puedo cancelar la suscripción en cualquier momento?", a: "Sí. Las suscripciones Pro se pueden cancelar en cualquier momento desde tu cuenta de Google Play, sin permanencia." },
     ],
   },
+  whatsNew: {
+    title: "Novedades",
+    subtitle: "Mejorando constantemente — estos son algunos aspectos destacados recientes",
+    items: [
+      "Las rutas generadas por IA ahora se previsualizan en el mapa al instante, sin esperar a iniciar la simulación",
+      "Se reorganizó el menú \"Más\" para encontrar funciones más rápido",
+      "Tutorial inicial simplificado a 9 pasos clave",
+      "Se añadieron 3 nuevas categorías de marcadores favoritos: Gimnasio, Punto de abastecimiento, Fósil",
+    ],
+  },
+  related: {
+    title: "Más recomendaciones",
+    subtitle: "Otros recursos que combinan bien con esta app",
+    placeholder: { name: "Próximamente", desc: "Estamos preparando más recomendaciones", cta: "Saber más" },
+  },
   ctaBanner: { title: "¿Listo para empezar a simular?", subtitle: "Descárgala gratis y prueba ya la generación de rutas con IA", button: "Consíguelo en Google Play" },
   footer: {
     tagline: "Simulador de ubicación GPS para Android",
@@ -406,7 +592,7 @@ es: {
 },
 
 pt: {
-  nav: { features: "Recursos", screenshots: "Capturas", pricing: "Planos", faq: "Perguntas frequentes", download: "Baixar grátis" },
+  nav: { features: "Recursos", usecases: "Casos de uso", screenshots: "Capturas", pricing: "Planos", faq: "Perguntas frequentes", download: "Baixar grátis" },
   hero: {
     badge: "Simulador de localização GPS para Android",
     title: "Teletransporte-se para qualquer lugar do mundo",
@@ -427,6 +613,27 @@ pt: {
       { title: "Painel de análises", desc: "Registro completo de rota, velocidade e consumo de bateria de cada simulação, exportável como relatórios HTML e arquivos GPX." },
       { title: "Sincronização multidispositivo via LAN", desc: "Sincronize a posição GPS entre vários dispositivos pela rede local, ideal para testes coordenados." },
       { title: "Interface em 10 idiomas", desc: "A interface é compatível com chinês, inglês, japonês, coreano, espanhol, português, hindi, árabe, italiano e tailandês." },
+    ],
+  },
+  how: {
+    title: "Como funciona",
+    subtitle: "Da rota à localização simulada em quatro passos",
+    steps: [
+      { title: "Escolha uma rota", desc: "Gere com IA, desenhe no mapa, importe um arquivo GPX ou cole uma lista de coordenadas." },
+      { title: "Defina velocidade e deriva", desc: "Escolha a taxa de atualização e a velocidade de movimento; adicione deriva GPS para um ruído de sinal mais realista." },
+      { title: "Inicie a simulação", desc: "Toque em iniciar — um serviço em primeiro plano assume os provedores Mock GPS e de rede." },
+      { title: "Os apps leem a localização simulada", desc: "Qualquer app que leia sua localização verá as coordenadas definidas, atualizadas em tempo real." },
+    ],
+  },
+  useCases: {
+    title: "Ideal para estes cenários",
+    subtitle: "Cinco casos de uso comuns para testes de desenvolvimento e verificação LBS",
+    items: [
+      { title: "Testes de apps QA / LBS", desc: "Verifique se os recursos baseados em localização se comportam corretamente em diferentes coordenadas." },
+      { title: "Simulação e repetição de rotas", desc: "Reproduza a mesma rota repetidamente para testes consistentes e repetíveis." },
+      { title: "Simulação de comportamento GIS", desc: "Simule como um sistema GIS responde ao posicionamento em diferentes regiões." },
+      { title: "Testes de deriva e ruído GPS", desc: "Verifique como seu app tolera erros e tenta novamente com sinal instável." },
+      { title: "Reprodução de localização (GPX / rotas personalizadas)", desc: "Importe um GPX existente ou coordenadas personalizadas para reproduzir um trajeto específico." },
     ],
   },
   screenshots: {
@@ -473,6 +680,21 @@ pt: {
       { q: "Posso cancelar a assinatura a qualquer momento?", a: "Sim. As assinaturas Pro podem ser canceladas a qualquer momento pela sua conta do Google Play, sem fidelidade." },
     ],
   },
+  whatsNew: {
+    title: "Novidades",
+    subtitle: "Melhorando continuamente — confira alguns destaques recentes",
+    items: [
+      "Rotas geradas por IA agora aparecem em pré-visualização no mapa instantaneamente, sem precisar iniciar a simulação",
+      "Menu \"Mais\" reorganizado para encontrar recursos mais rápido",
+      "Tutorial inicial simplificado para 9 passos essenciais",
+      "Adicionadas 3 novas categorias de marcadores favoritos: Academia, Ponto de Apoio, Fóssil",
+    ],
+  },
+  related: {
+    title: "Mais recomendações",
+    subtitle: "Outros recursos que combinam bem com este app",
+    placeholder: { name: "Em breve", desc: "Mais recomendações estão a caminho", cta: "Saiba mais" },
+  },
   ctaBanner: { title: "Pronto para começar a simular?", subtitle: "Baixe grátis e experimente agora a geração de rotas com IA", button: "Disponível no Google Play" },
   footer: {
     tagline: "Simulador de localização GPS para Android",
@@ -483,7 +705,7 @@ pt: {
 },
 
 it: {
-  nav: { features: "Funzionalità", screenshots: "Screenshot", pricing: "Prezzi", faq: "FAQ", download: "Scarica gratis" },
+  nav: { features: "Funzionalità", usecases: "Casi d'uso", screenshots: "Screenshot", pricing: "Prezzi", faq: "FAQ", download: "Scarica gratis" },
   hero: {
     badge: "Simulatore di posizione GPS per Android",
     title: "Teletrasportati ovunque nel mondo con un tocco",
@@ -504,6 +726,27 @@ it: {
       { title: "Dashboard di analisi", desc: "Registrazione completa di percorso, velocità e consumo della batteria per ogni simulazione, esportabile come report HTML e file GPX." },
       { title: "Sincronizzazione LAN multi-dispositivo", desc: "Sincronizza la posizione GPS tra più dispositivi tramite rete locale, ideale per test coordinati." },
       { title: "Interfaccia in 10 lingue", desc: "L'interfaccia supporta cinese, inglese, giapponese, coreano, spagnolo, portoghese, hindi, arabo, italiano e thailandese." },
+    ],
+  },
+  how: {
+    title: "Come funziona",
+    subtitle: "Dal percorso alla posizione simulata in quattro passaggi",
+    steps: [
+      { title: "Scegli un percorso", desc: "Generalo con l'IA, disegnalo sulla mappa, importa un file GPX o incolla un elenco di coordinate." },
+      { title: "Imposta velocità e deriva", desc: "Scegli la frequenza di aggiornamento e la velocità di movimento; aggiungi la deriva GPS per un rumore di segnale più realistico." },
+      { title: "Avvia la simulazione", desc: "Tocca avvia: un servizio in primo piano prende il controllo dei provider Mock GPS e di rete." },
+      { title: "Le app leggono la posizione simulata", desc: "Qualsiasi app che legge la tua posizione vedrà le coordinate impostate, aggiornate in tempo reale." },
+    ],
+  },
+  useCases: {
+    title: "Ideale per questi scenari",
+    subtitle: "Cinque casi d'uso comuni per test di sviluppo e verifica LBS",
+    items: [
+      { title: "Test di app QA / LBS", desc: "Verifica che le funzionalità basate sulla posizione si comportino correttamente con coordinate diverse." },
+      { title: "Simulazione e riproduzione percorsi", desc: "Riproduci lo stesso percorso più volte per test coerenti e ripetibili." },
+      { title: "Simulazione del comportamento GIS", desc: "Simula come un sistema GIS risponde al posizionamento in diverse regioni." },
+      { title: "Test di deriva e rumore GPS", desc: "Verifica come la tua app tollera errori e tentativi con segnale instabile." },
+      { title: "Riproduzione della posizione (GPX / percorsi personalizzati)", desc: "Importa un GPX esistente o coordinate personalizzate per riprodurre un tragitto specifico." },
     ],
   },
   screenshots: {
@@ -550,6 +793,21 @@ it: {
       { q: "Posso annullare l'abbonamento in qualsiasi momento?", a: "Sì. Gli abbonamenti Pro possono essere annullati in qualsiasi momento dal tuo account Google Play, senza vincoli." },
     ],
   },
+  whatsNew: {
+    title: "Novità",
+    subtitle: "Miglioriamo costantemente — ecco alcune novità recenti",
+    items: [
+      "I percorsi generati dall'IA ora mostrano un'anteprima sulla mappa istantaneamente, senza attendere l'avvio della simulazione",
+      "Menu \"Altro\" riorganizzato per trovare le funzionalità più velocemente",
+      "Tutorial iniziale semplificato a 9 passaggi chiave",
+      "Aggiunte 3 nuove categorie di segnaposto preferiti: Palestra, Punto di rifornimento, Fossile",
+    ],
+  },
+  related: {
+    title: "Altri consigli",
+    subtitle: "Altre risorse da abbinare a questa app",
+    placeholder: { name: "Prossimamente", desc: "Altri consigli in arrivo", cta: "Scopri di più" },
+  },
   ctaBanner: { title: "Pronto a iniziare a simulare?", subtitle: "Scaricala gratis e prova subito la generazione di percorsi con IA", button: "Scaricala su Google Play" },
   footer: {
     tagline: "Simulatore di posizione GPS per Android",
@@ -560,7 +818,7 @@ it: {
 },
 
 hi: {
-  nav: { features: "सुविधाएं", screenshots: "स्क्रीनशॉट", pricing: "मूल्य", faq: "सामान्य प्रश्न", download: "मुफ़्त डाउनलोड" },
+  nav: { features: "सुविधाएं", usecases: "उपयोग परिदृश्य", screenshots: "स्क्रीनशॉट", pricing: "मूल्य", faq: "सामान्य प्रश्न", download: "मुफ़्त डाउनलोड" },
   hero: {
     badge: "Android GPS लोकेशन सिम्युलेटर",
     title: "एक टैप में दुनिया में कहीं भी टेलीपोर्ट करें",
@@ -581,6 +839,27 @@ hi: {
       { title: "एनालिटिक्स डैशबोर्ड", desc: "हर सिमुलेशन के रूट, स्पीड और बैटरी उपयोग का पूरा रिकॉर्ड, जिसे HTML रिपोर्ट और GPX फ़ाइल के रूप में निर्यात किया जा सकता है।" },
       { title: "LAN मल्टी-डिवाइस सिंक", desc: "लोकल नेटवर्क के ज़रिए कई डिवाइसों की GPS लोकेशन सिंक करें — मल्टी-डिवाइस टेस्टिंग के लिए आदर्श।" },
       { title: "10 भाषाओं का इंटरफ़ेस", desc: "इंटरफ़ेस चीनी, अंग्रेज़ी, जापानी, कोरियाई, स्पेनिश, पुर्तगाली, हिंदी, अरबी, इतालवी और थाई सहित 10 भाषाओं में उपलब्ध है।" },
+    ],
+  },
+  how: {
+    title: "यह कैसे काम करता है",
+    subtitle: "रूट से सिम्युलेटेड लोकेशन तक, सिर्फ़ 4 चरणों में",
+    steps: [
+      { title: "रूट चुनें", desc: "AI से जनरेट करें, मानचित्र पर बनाएं, GPX फ़ाइल आयात करें, या निर्देशांक सूची पेस्ट करें।" },
+      { title: "स्पीड और ड्रिफ्ट सेट करें", desc: "अपडेट दर और मूवमेंट स्पीड चुनें, और अधिक यथार्थवादी सिग्नल शोर के लिए GPS ड्रिफ्ट जोड़ें।" },
+      { title: "सिमुलेशन शुरू करें", desc: "स्टार्ट टैप करें — एक फ़ोरग्राउंड सेवा Mock GPS और Network दोनों प्रोवाइडर को नियंत्रित करती है।" },
+      { title: "ऐप्स सिम्युलेटेड लोकेशन पढ़ते हैं", desc: "लोकेशन पढ़ने वाला कोई भी ऐप आपके सेट किए गए निर्देशांक को रीयल-टाइम में देखेगा।" },
+    ],
+  },
+  useCases: {
+    title: "इन परिदृश्यों के लिए उपयुक्त",
+    subtitle: "डेवलपमेंट टेस्टिंग और LBS सत्यापन के लिए पांच सामान्य उपयोग के मामले",
+    items: [
+      { title: "QA / LBS ऐप टेस्टिंग", desc: "अलग-अलग निर्देशांकों पर लोकेशन-आधारित सुविधाओं का सही व्यवहार सत्यापित करें।" },
+      { title: "रूट सिमुलेशन और रीप्ले", desc: "एक ही रूट को बार-बार रीप्ले करके सुसंगत टेस्ट चलाएं।" },
+      { title: "GIS व्यवहार सिमुलेशन", desc: "अलग-अलग क्षेत्रों में GIS सिस्टम की पोजिशनिंग प्रतिक्रिया का अनुकरण करें।" },
+      { title: "GPS ड्रिफ्ट और शोर टेस्टिंग", desc: "अस्थिर सिग्नल स्थितियों में आपके ऐप की त्रुटि सहनशीलता और रीट्राई व्यवहार जांचें।" },
+      { title: "लोकेशन रीप्ले (GPX／कस्टम रूट)", desc: "किसी विशेष मूवमेंट पाथ को फिर से बनाने के लिए मौजूदा GPX या कस्टम निर्देशांक आयात करें।" },
     ],
   },
   screenshots: {
@@ -627,6 +906,21 @@ hi: {
       { q: "क्या मैं कभी भी सब्सक्रिप्शन रद्द कर सकता हूं?", a: "हां। Pro सब्सक्रिप्शन को Google Play खाते से कभी भी रद्द किया जा सकता है, बिना किसी दीर्घकालिक प्रतिबद्धता के।" },
     ],
   },
+  whatsNew: {
+    title: "नया क्या है",
+    subtitle: "लगातार सुधार हो रहा है — यहां कुछ हालिया मुख्य बदलाव हैं",
+    items: [
+      "AI रूट जनरेशन के बाद अब सिमुलेशन शुरू किए बिना ही मानचित्र पर तुरंत पूर्वावलोकन",
+      "सुविधाएं जल्दी खोजने के लिए 'अधिक सुविधाएं' मेनू को फिर से व्यवस्थित किया गया",
+      "पहली बार के ट्यूटोरियल को 9 मुख्य चरणों में सरल किया गया",
+      "पसंदीदा मार्कर में 3 नई श्रेणियां जोड़ी गईं: जिम, सप्लाई स्टेशन, जीवाश्म",
+    ],
+  },
+  related: {
+    title: "और सुझाव",
+    subtitle: "इस ऐप के साथ उपयोग करने लायक अन्य संसाधन",
+    placeholder: { name: "जल्द आ रहा है", desc: "और सुझाव जल्द ही तैयार होंगे", cta: "और जानें" },
+  },
   ctaBanner: { title: "सिमुलेशन शुरू करने के लिए तैयार हैं?", subtitle: "मुफ़्त डाउनलोड करें और अभी AI रूट जनरेशन आज़माएं", button: "Google Play पर पाएं" },
   footer: {
     tagline: "Android GPS लोकेशन सिम्युलेटर",
@@ -637,7 +931,7 @@ hi: {
 },
 
 ar: {
-  nav: { features: "الميزات", screenshots: "لقطات الشاشة", pricing: "الأسعار", faq: "الأسئلة الشائعة", download: "تنزيل مجاني" },
+  nav: { features: "الميزات", usecases: "سيناريوهات الاستخدام", screenshots: "لقطات الشاشة", pricing: "الأسعار", faq: "الأسئلة الشائعة", download: "تنزيل مجاني" },
   hero: {
     badge: "محاكي موقع GPS لأندرويد",
     title: "انتقل فورًا إلى أي مكان في العالم بنقرة واحدة",
@@ -658,6 +952,27 @@ ar: {
       { title: "لوحة التحليلات", desc: "تسجيل كامل لمسار وسرعة واستهلاك البطارية لكل محاكاة، مع إمكانية التصدير كتقارير HTML وملفات GPX." },
       { title: "مزامنة عبر الشبكة المحلية", desc: "زامن موقع GPS بين عدة أجهزة عبر الشبكة المحلية، مثالي للاختبارات المنسقة على أجهزة متعددة." },
       { title: "واجهة بـ 10 لغات", desc: "تدعم الواجهة الصينية والإنجليزية واليابانية والكورية والإسبانية والبرتغالية والهندية والعربية والإيطالية والتايلاندية." },
+    ],
+  },
+  how: {
+    title: "كيف يعمل",
+    subtitle: "من المسار إلى الموقع المحاكى في أربع خطوات",
+    steps: [
+      { title: "اختر مسارًا", desc: "وّلده بالذكاء الاصطناعي، ارسمه على الخريطة، استورد ملف GPX، أو الصق قائمة إحداثيات." },
+      { title: "اضبط السرعة والانحراف", desc: "اختر معدل التحديث وسرعة الحركة، ويمكنك إضافة انحراف GPS لضوضاء إشارة أكثر واقعية." },
+      { title: "ابدأ المحاكاة", desc: "اضغط على بدء — تتولى خدمة تعمل في المقدمة التحكم بمزوّدي الموقع Mock GPS والشبكة معًا." },
+      { title: "تقرأ التطبيقات الموقع المحاكى", desc: "أي تطبيق يقرأ موقعك سيرى الإحداثيات التي حددتها، محدثة في الوقت الفعلي." },
+    ],
+  },
+  useCases: {
+    title: "مثالي لهذه السيناريوهات",
+    subtitle: "خمس حالات استخدام شائعة لاختبارات التطوير والتحقق من تطبيقات LBS",
+    items: [
+      { title: "اختبار تطبيقات ضمان الجودة / LBS", desc: "تحقق من أن الميزات المعتمدة على الموقع تعمل بشكل صحيح عبر إحداثيات مختلفة." },
+      { title: "محاكاة المسارات وإعادة تشغيلها", desc: "أعد تشغيل نفس المسار بشكل متكرر لإجراء اختبارات متسقة وقابلة للتكرار." },
+      { title: "محاكاة سلوك نظم المعلومات الجغرافية", desc: "حاكِ استجابة نظام المعلومات الجغرافية لتحديد الموقع في مناطق مختلفة." },
+      { title: "اختبار انحراف وضوضاء GPS", desc: "تحقق من كيفية تعامل تطبيقك مع الأخطاء وإعادة المحاولة عند عدم استقرار الإشارة." },
+      { title: "إعادة تشغيل الموقع (GPX／مسارات مخصصة)", desc: "استورد ملف GPX موجودًا أو إحداثيات مخصصة لإعادة إنتاج مسار حركة معين." },
     ],
   },
   screenshots: {
@@ -704,6 +1019,21 @@ ar: {
       { q: "هل يمكنني إلغاء الاشتراك في أي وقت؟", a: "نعم، يمكن إلغاء اشتراك Pro في أي وقت من خلال حساب Google Play الخاص بك، دون أي التزام طويل الأمد." },
     ],
   },
+  whatsNew: {
+    title: "الجديد",
+    subtitle: "تحسين مستمر — إليك بعض أبرز التحديثات الأخيرة",
+    items: [
+      "أصبحت مسارات الذكاء الاصطناعي تُعرض كمعاينة على الخريطة فورًا دون الحاجة لبدء المحاكاة",
+      "إعادة تنظيم قائمة \"المزيد\" للعثور على الميزات بسرعة أكبر",
+      "تبسيط الجولة التعريفية الأولى إلى 9 خطوات أساسية",
+      "إضافة 3 فئات جديدة للعلامات المفضلة: صالة رياضية، محطة إمداد، أحفورة",
+    ],
+  },
+  related: {
+    title: "المزيد من التوصيات",
+    subtitle: "موارد أخرى تستحق الاستخدام مع هذا التطبيق",
+    placeholder: { name: "قريبًا", desc: "المزيد من التوصيات قيد الإعداد", cta: "اعرف المزيد" },
+  },
   ctaBanner: { title: "هل أنت مستعد لبدء المحاكاة؟", subtitle: "نزّل التطبيق مجانًا وجرّب توليد المسارات بالذكاء الاصطناعي الآن", button: "احصل عليه من Google Play" },
   footer: {
     tagline: "محاكي موقع GPS لأندرويد",
@@ -714,7 +1044,7 @@ ar: {
 },
 
 th: {
-  nav: { features: "ฟีเจอร์", screenshots: "ภาพหน้าจอ", pricing: "ราคา", faq: "คำถามที่พบบ่อย", download: "ดาวน์โหลดฟรี" },
+  nav: { features: "ฟีเจอร์", usecases: "การใช้งาน", screenshots: "ภาพหน้าจอ", pricing: "ราคา", faq: "คำถามที่พบบ่อย", download: "ดาวน์โหลดฟรี" },
   hero: {
     badge: "เครื่องมือจำลองตำแหน่ง GPS สำหรับ Android",
     title: "เทเลพอร์ตไปที่ไหนก็ได้ในโลก เพียงแตะเดียว",
@@ -735,6 +1065,27 @@ th: {
       { title: "แดชบอร์ดวิเคราะห์ข้อมูล", desc: "บันทึกเส้นทาง ความเร็ว และการใช้แบตเตอรี่ของทุกการจำลองอย่างครบถ้วน ส่งออกเป็นรายงาน HTML และไฟล์ GPX ได้" },
       { title: "ซิงค์หลายอุปกรณ์ผ่าน LAN", desc: "ซิงค์ตำแหน่ง GPS ระหว่างหลายอุปกรณ์ผ่านเครือข่ายท้องถิ่น เหมาะสำหรับการทดสอบร่วมกันหลายเครื่อง" },
       { title: "อินเทอร์เฟซ 10 ภาษา", desc: "รองรับภาษาจีน อังกฤษ ญี่ปุ่น เกาหลี สเปน โปรตุเกส ฮินดี อาหรับ อิตาลี และไทย รวม 10 ภาษา" },
+    ],
+  },
+  how: {
+    title: "วิธีการทำงาน",
+    subtitle: "จากเส้นทางสู่ตำแหน่งจำลอง เพียง 4 ขั้นตอน",
+    steps: [
+      { title: "เลือกเส้นทาง", desc: "ให้ AI สร้างให้ วาดบนแผนที่ นำเข้าไฟล์ GPX หรือวางรายการพิกัด" },
+      { title: "ตั้งค่าความเร็วและความคลาดเคลื่อน", desc: "เลือกอัตราการอัปเดตและความเร็วในการเคลื่อนที่ และเพิ่มความคลาดเคลื่อน GPS เพื่อจำลองสัญญาณรบกวนที่สมจริงยิ่งขึ้น" },
+      { title: "เริ่มการจำลอง", desc: "แตะเริ่ม บริการพื้นหน้าจะเข้าควบคุมทั้ง Mock GPS และผู้ให้บริการเครือข่าย" },
+      { title: "แอปอ่านตำแหน่งจำลอง", desc: "แอปใดก็ตามที่อ่านตำแหน่งของคุณจะเห็นพิกัดที่คุณตั้งค่าไว้ อัปเดตแบบเรียลไทม์" },
+    ],
+  },
+  useCases: {
+    title: "เหมาะสำหรับสถานการณ์เหล่านี้",
+    subtitle: "5 กรณีการใช้งานทั่วไปสำหรับการทดสอบการพัฒนาและการตรวจสอบ LBS",
+    items: [
+      { title: "การทดสอบแอป QA / LBS", desc: "ตรวจสอบว่าฟีเจอร์ที่อิงตำแหน่งทำงานถูกต้องในพิกัดต่างๆ" },
+      { title: "การจำลองและเล่นซ้ำเส้นทาง", desc: "เล่นซ้ำเส้นทางเดียวกันซ้ำๆ เพื่อการทดสอบที่สม่ำเสมอและทำซ้ำได้" },
+      { title: "การจำลองพฤติกรรม GIS", desc: "จำลองการตอบสนองของระบบ GIS ต่อการระบุตำแหน่งในภูมิภาคต่างๆ" },
+      { title: "การทดสอบความคลาดเคลื่อนและสัญญาณรบกวน GPS", desc: "ตรวจสอบว่าแอปของคุณรับมือกับข้อผิดพลาดและลองใหม่อย่างไรเมื่อสัญญาณไม่เสถียร" },
+      { title: "เล่นซ้ำตำแหน่ง (GPX／เส้นทางกำหนดเอง)", desc: "นำเข้าไฟล์ GPX ที่มีอยู่หรือพิกัดกำหนดเองเพื่อจำลองเส้นทางการเคลื่อนที่เฉพาะ" },
     ],
   },
   screenshots: {
@@ -780,6 +1131,21 @@ th: {
       { q: "เวอร์ชันฟรีกับ Pro ต่างกันอย่างไร", a: "เวอร์ชันฟรีใช้งานการจำลองหลักและฟีเจอร์เส้นทาง AI ได้ (มีโฆษณาบ้าง) ส่วน Pro ปลดล็อกประสบการณ์ไม่มีโฆษณา พฤติกรรม AI ระดับพรีเมียม อัตราอัปเดตที่สูงขึ้น การซิงค์ผ่าน LAN การเชื่อมต่อ Google Fit และแผนที่ออฟไลน์" },
       { q: "ยกเลิกการสมัครสมาชิกได้ตลอดเวลาไหม", a: "ได้ สามารถยกเลิกการสมัครสมาชิก Pro ได้ตลอดเวลาผ่านบัญชี Google Play ของคุณ โดยไม่มีข้อผูกมัด" },
     ],
+  },
+  whatsNew: {
+    title: "อัปเดตล่าสุด",
+    subtitle: "ปรับปรุงอย่างต่อเนื่อง นี่คือไฮไลต์ล่าสุด",
+    items: [
+      "เส้นทางที่สร้างด้วย AI แสดงตัวอย่างบนแผนที่ได้ทันที ไม่ต้องรอเริ่มจำลอง",
+      "จัดหมวดหมู่เมนู \"เพิ่มเติม\" ใหม่ ให้หาฟีเจอร์ได้เร็วขึ้น",
+      "ปรับทัวร์แนะนำครั้งแรกให้เหลือ 9 ขั้นตอนหลัก",
+      "เพิ่มหมวดหมู่หมุดโปรด 3 หมวดใหม่: ยิม, จุดเสบียง, ฟอสซิล",
+    ],
+  },
+  related: {
+    title: "คำแนะนำเพิ่มเติม",
+    subtitle: "แหล่งข้อมูลอื่นๆ ที่ควรใช้คู่กับแอปนี้",
+    placeholder: { name: "เร็วๆ นี้", desc: "กำลังเตรียมคำแนะนำเพิ่มเติม", cta: "ดูเพิ่มเติม" },
   },
   ctaBanner: { title: "พร้อมเริ่มจำลองแล้วหรือยัง", subtitle: "ดาวน์โหลดฟรีแล้วลองสร้างเส้นทางด้วย AI ได้เลยตอนนี้", button: "ดาวน์โหลดบน Google Play" },
   footer: {
@@ -835,6 +1201,32 @@ function renderLang(lang) {
     card.appendChild(el("h3", null, item.title));
     card.appendChild(el("p", null, item.desc));
     fg.appendChild(card);
+  });
+
+  // how it works
+  document.getElementById("howTitle").textContent = t.how.title;
+  document.getElementById("howSubtitle").textContent = t.how.subtitle;
+  const hs = document.getElementById("howSteps");
+  hs.innerHTML = "";
+  t.how.steps.forEach((step, i) => {
+    const card = el("div", "step-card");
+    card.appendChild(el("div", "step-num", String(i + 1)));
+    card.appendChild(el("h3", null, step.title));
+    card.appendChild(el("p", null, step.desc));
+    hs.appendChild(card);
+  });
+
+  // use cases
+  document.getElementById("useCasesTitle").textContent = t.useCases.title;
+  document.getElementById("useCasesSubtitle").textContent = t.useCases.subtitle;
+  const ug = document.getElementById("useCasesGrid");
+  ug.innerHTML = "";
+  t.useCases.items.forEach((item, i) => {
+    const card = el("div", "card");
+    card.appendChild(el("div", "card-icon", USECASE_ICONS[i] || "★"));
+    card.appendChild(el("h3", null, item.title));
+    card.appendChild(el("p", null, item.desc));
+    ug.appendChild(card);
   });
 
   // screenshots
@@ -916,6 +1308,32 @@ function renderLang(lang) {
     details.appendChild(summary);
     details.appendChild(el("p", null, item.a));
     fl.appendChild(details);
+  });
+
+  // what's new
+  document.getElementById("whatsNewTitle").textContent = t.whatsNew.title;
+  document.getElementById("whatsNewSubtitle").textContent = t.whatsNew.subtitle;
+  const wn = document.getElementById("whatsNewList");
+  wn.innerHTML = "";
+  t.whatsNew.items.forEach((txt) => wn.appendChild(el("li", null, txt)));
+
+  // related
+  document.getElementById("relatedTitle").textContent = t.related.title;
+  document.getElementById("relatedSubtitle").textContent = t.related.subtitle;
+  const rr = document.getElementById("relatedRow");
+  rr.innerHTML = "";
+  RELATED_PRODUCTS.forEach((p) => {
+    const card = el("a", "related-card");
+    card.href = p.link || "#";
+    card.target = "_blank";
+    card.rel = "noopener";
+    const img = document.createElement("img");
+    img.src = p.image;
+    img.alt = p.name || t.related.placeholder.name;
+    card.appendChild(img);
+    card.appendChild(el("h3", null, p.name || t.related.placeholder.name));
+    card.appendChild(el("p", null, p.desc || t.related.placeholder.desc));
+    rr.appendChild(card);
   });
 
   // cta banner
