@@ -19,9 +19,25 @@ const FEATURE_ICONS = ["✨", "📡", "✏️", "🕹️", "🗺️", "📊", "�
 const WHY_ICONS = ["🎯", "🛠️", "🔄", "🔒"];
 const USECASE_ICONS = ["🧪", "🔁", "🗺️", "📶", "📼"];
 
-// 這裡放你自己的推薦連結：image（圖片路徑）、link（網址）、name/desc（留空則顯示各語言的預設「敬請期待」文字）
+// 推薦連結：icon（emoji，不用第三方 logo 避免商標問題）或 image（圖片路徑）、link、name；
+// desc 可以是字串或 { zh, en, ... } 各語言物件（缺的語言退回 en）。陣列清空時顯示「敬請期待」placeholder
 const RELATED_PRODUCTS = [
-  { image: "assets/img/icon.png", link: "#", name: "", desc: "" },
+  { icon: "🏃", name: "Strava", link: "https://www.strava.com/",
+    desc: { zh: "匯出跑步、騎車的真實 GPX 軌跡", en: "Export real running & cycling tracks as GPX", ja: "ランニング・サイクリングの実走 GPX を書き出し", ko: "러닝·라이딩 실제 GPX 경로 내보내기", es: "Exporta rutas GPX reales de carrera y ciclismo", pt: "Exporte trajetos GPX reais de corrida e ciclismo", hi: "दौड़ और साइकिलिंग के असली GPX ट्रैक निर्यात करें", ar: "صدّر مسارات GPX حقيقية للجري وركوب الدراجات", it: "Esporta tracce GPX reali di corsa e ciclismo", th: "ส่งออกเส้นทาง GPX จริงจากการวิ่งและปั่นจักรยาน" } },
+  { icon: "⌚", name: "Garmin Connect", link: "https://connect.garmin.com/",
+    desc: { zh: "從 Garmin 裝置紀錄匯出 GPX 活動", en: "Export GPX activities recorded on Garmin devices", ja: "Garmin デバイスの記録を GPX で書き出し", ko: "Garmin 기기 활동을 GPX로 내보내기", es: "Exporta actividades GPX de dispositivos Garmin", pt: "Exporte atividades GPX de dispositivos Garmin", hi: "Garmin डिवाइस की गतिविधियाँ GPX में निर्यात करें", ar: "صدّر أنشطة أجهزة Garmin بصيغة GPX", it: "Esporta attività GPX dai dispositivi Garmin", th: "ส่งออกกิจกรรมจากอุปกรณ์ Garmin เป็น GPX" } },
+  { icon: "🚴", name: "Komoot", link: "https://www.komoot.com/",
+    desc: { zh: "規劃健行、單車路線並下載 GPX", en: "Plan hiking & bike routes and download GPX", ja: "ハイキング・自転車ルートを計画して GPX 保存", ko: "하이킹·자전거 경로 계획 후 GPX 다운로드", es: "Planifica rutas de senderismo y bici y descarga GPX", pt: "Planeje trilhas e rotas de bike e baixe GPX", hi: "हाइकिंग व बाइक मार्ग बनाएँ और GPX डाउनलोड करें", ar: "خطّط لمسارات المشي والدراجات ونزّل GPX", it: "Pianifica percorsi a piedi e in bici e scarica il GPX", th: "วางแผนเส้นทางเดินป่า/ปั่นจักรยานแล้วดาวน์โหลด GPX" } },
+  { icon: "🥾", name: "AllTrails", link: "https://www.alltrails.com/",
+    desc: { zh: "全球步道路線庫，找真實路線來重播", en: "Worldwide trail library — find real routes to replay", ja: "世界のトレイル情報から実在ルートを探せる", ko: "전 세계 트레일에서 실제 경로 찾기", es: "Biblioteca mundial de senderos para encontrar rutas reales", pt: "Biblioteca mundial de trilhas para achar rotas reais", hi: "असली मार्ग खोजने के लिए दुनिया भर की ट्रेल लाइब्रेरी", ar: "مكتبة مسارات عالمية للعثور على طرق حقيقية", it: "Libreria mondiale di sentieri per trovare percorsi reali", th: "คลังเส้นทางเดินทั่วโลก หาเส้นทางจริงมาเล่นซ้ำ" } },
+  { icon: "✏️", name: "gpx.studio", link: "https://gpx.studio/",
+    desc: { zh: "免費線上 GPX 編輯器，畫線、合併、修剪", en: "Free online GPX editor — draw, merge, trim", ja: "無料のオンライン GPX エディタ（作成・結合・トリム）", ko: "무료 온라인 GPX 편집기 — 그리기·병합·자르기", es: "Editor GPX online gratis: dibuja, une y recorta", pt: "Editor GPX online grátis: desenhe, junte e corte", hi: "मुफ़्त ऑनलाइन GPX संपादक — बनाएँ, जोड़ें, काटें", ar: "محرر GPX مجاني عبر الإنترنت: رسم ودمج وقص", it: "Editor GPX online gratuito: disegna, unisci, taglia", th: "โปรแกรมแก้ไข GPX ออนไลน์ฟรี วาด รวม ตัดแต่ง" } },
+  { icon: "🗺️", name: "OsmAnd", link: "https://osmand.net/",
+    desc: { zh: "離線地圖導航，可規劃並匯出 GPX 路線", en: "Offline maps that can plan and export GPX routes", ja: "オフライン地図でルート作成・GPX 書き出し", ko: "오프라인 지도로 경로 계획 및 GPX 내보내기", es: "Mapas sin conexión para planificar y exportar rutas GPX", pt: "Mapas offline para planejar e exportar rotas GPX", hi: "ऑफ़लाइन मानचित्र, GPX मार्ग बनाएँ और निर्यात करें", ar: "خرائط دون اتصال لتخطيط مسارات GPX وتصديرها", it: "Mappe offline per pianificare ed esportare percorsi GPX", th: "แผนที่ออฟไลน์ วางแผนและส่งออกเส้นทาง GPX" } },
+  { icon: "📡", name: "GPSTest", link: "https://play.google.com/store/apps/details?id=com.android.gpstest",
+    desc: { zh: "開源 GPS 檢測工具，確認模擬座標與精確度", en: "Open-source GPS tool to verify simulated position & accuracy", ja: "オープンソースの GPS ツールで模擬位置と精度を確認", ko: "오픈소스 GPS 도구로 모의 위치·정확도 확인", es: "Herramienta GPS de código abierto para verificar posición y precisión", pt: "Ferramenta GPS de código aberto para verificar posição e precisão", hi: "सिम्युलेटेड स्थान और सटीकता जाँचने का ओपन-सोर्स GPS टूल", ar: "أداة GPS مفتوحة المصدر للتحقق من الموقع والدقة", it: "Strumento GPS open source per verificare posizione e precisione", th: "เครื่องมือ GPS โอเพนซอร์ส ตรวจตำแหน่งจำลองและความแม่นยำ" } },
+  { icon: "❤️", name: "Health Connect", link: "https://play.google.com/store/apps/details?id=com.google.android.apps.healthdata",
+    desc: { zh: "Android 健康資料中心，Pro 步數同步的目的地", en: "Android's health data hub — where Pro step sync writes", ja: "Android の健康データハブ。Pro の歩数同期先", ko: "Android 건강 데이터 허브 — Pro 걸음 수 동기화 대상", es: "Centro de datos de salud de Android, destino de la sincronización de pasos Pro", pt: "Central de dados de saúde do Android, destino da sincronização de passos Pro", hi: "Android का हेल्थ डेटा हब — Pro कदम सिंक यहीं जाता है", ar: "مركز بيانات الصحة في Android، وجهة مزامنة الخطوات في Pro", it: "L'hub dei dati salute di Android, dove scrive la sincronizzazione passi Pro", th: "ศูนย์ข้อมูลสุขภาพของ Android ปลายทางการซิงค์ก้าวของ Pro" } },
 ];
 
 const T = {
@@ -149,6 +165,7 @@ zh: {
     title: "更多推薦",
     subtitle: "值得搭配使用的其他資源",
     placeholder: { name: "敬請期待", desc: "更多推薦內容準備中", cta: "了解更多" },
+    note: "以上為第三方服務，與 Capy GPS Simulator 無合作關係，名稱與商標屬各自擁有者。",
   },
   ctaBanner: { title: "準備好開始模擬了嗎？", subtitle: "免費下載，馬上體驗 AI 路線生成", button: "在 Google Play 下載" },
   footer: {
@@ -282,6 +299,7 @@ en: {
     title: "More Recommendations",
     subtitle: "Other resources worth pairing with this app",
     placeholder: { name: "Coming soon", desc: "More recommendations are on the way", cta: "Learn more" },
+    note: "Third-party services, not affiliated with Capy GPS Simulator. Names and trademarks belong to their owners.",
   },
   ctaBanner: { title: "Ready to start simulating?", subtitle: "Download for free and try AI route generation now", button: "Get it on Google Play" },
   footer: {
@@ -415,6 +433,7 @@ ja: {
     title: "おすすめ",
     subtitle: "あわせて使いたいその他のリソース",
     placeholder: { name: "近日公開", desc: "おすすめコンテンツを準備中です", cta: "詳しく見る" },
+    note: "掲載はサードパーティのサービスで、Capy GPS Simulator とは提携していません。名称・商標は各権利者に帰属します。",
   },
   ctaBanner: { title: "シミュレーションを始めましょう", subtitle: "無料でダウンロードして、AIルート生成をすぐに体験", button: "Google Play で入手" },
   footer: {
@@ -548,6 +567,7 @@ ko: {
     title: "추천 콘텐츠",
     subtitle: "함께 사용하면 좋은 다른 리소스",
     placeholder: { name: "곧 공개 예정", desc: "추천 콘텐츠를 준비 중입니다", cta: "자세히 보기" },
+    note: "제3자 서비스이며 Capy GPS Simulator와 제휴 관계가 없습니다. 명칭과 상표는 각 소유자에게 있습니다.",
   },
   ctaBanner: { title: "시뮬레이션을 시작할 준비가 되셨나요?", subtitle: "무료로 다운로드하고 AI 경로 생성을 바로 체험해보세요", button: "Google Play에서 다운로드" },
   footer: {
@@ -681,6 +701,7 @@ es: {
     title: "Más recomendaciones",
     subtitle: "Otros recursos que combinan bien con esta app",
     placeholder: { name: "Próximamente", desc: "Estamos preparando más recomendaciones", cta: "Saber más" },
+    note: "Servicios de terceros sin afiliación con Capy GPS Simulator. Los nombres y marcas pertenecen a sus propietarios.",
   },
   ctaBanner: { title: "¿Listo para empezar a simular?", subtitle: "Descárgala gratis y prueba ya la generación de rutas con IA", button: "Consíguelo en Google Play" },
   footer: {
@@ -814,6 +835,7 @@ pt: {
     title: "Mais recomendações",
     subtitle: "Outros recursos que combinam bem com este app",
     placeholder: { name: "Em breve", desc: "Mais recomendações estão a caminho", cta: "Saiba mais" },
+    note: "Serviços de terceiros sem afiliação com a Capy GPS Simulator. Nomes e marcas pertencem aos seus donos.",
   },
   ctaBanner: { title: "Pronto para começar a simular?", subtitle: "Baixe grátis e experimente agora a geração de rotas com IA", button: "Disponível no Google Play" },
   footer: {
@@ -947,6 +969,7 @@ it: {
     title: "Altri consigli",
     subtitle: "Altre risorse da abbinare a questa app",
     placeholder: { name: "Prossimamente", desc: "Altri consigli in arrivo", cta: "Scopri di più" },
+    note: "Servizi di terze parti non affiliati a Capy GPS Simulator. Nomi e marchi appartengono ai rispettivi proprietari.",
   },
   ctaBanner: { title: "Pronto a iniziare a simulare?", subtitle: "Scaricala gratis e prova subito la generazione di percorsi con IA", button: "Scaricala su Google Play" },
   footer: {
@@ -1080,6 +1103,7 @@ hi: {
     title: "और सुझाव",
     subtitle: "इस ऐप के साथ उपयोग करने लायक अन्य संसाधन",
     placeholder: { name: "जल्द आ रहा है", desc: "और सुझाव जल्द ही तैयार होंगे", cta: "और जानें" },
+    note: "ये तृतीय-पक्ष सेवाएँ हैं, Capy GPS Simulator से संबद्ध नहीं। नाम और ट्रेडमार्क उनके स्वामियों के हैं।",
   },
   ctaBanner: { title: "सिमुलेशन शुरू करने के लिए तैयार हैं?", subtitle: "मुफ़्त डाउनलोड करें और अभी AI रूट जनरेशन आज़माएं", button: "Google Play पर पाएं" },
   footer: {
@@ -1213,6 +1237,7 @@ ar: {
     title: "المزيد من التوصيات",
     subtitle: "موارد أخرى تستحق الاستخدام مع هذا التطبيق",
     placeholder: { name: "قريبًا", desc: "المزيد من التوصيات قيد الإعداد", cta: "اعرف المزيد" },
+    note: "هذه خدمات تابعة لجهات خارجية ولا ترتبط بـ Capy GPS Simulator. الأسماء والعلامات التجارية مملوكة لأصحابها.",
   },
   ctaBanner: { title: "هل أنت مستعد لبدء المحاكاة؟", subtitle: "نزّل التطبيق مجانًا وجرّب توليد المسارات بالذكاء الاصطناعي الآن", button: "احصل عليه من Google Play" },
   footer: {
@@ -1346,6 +1371,7 @@ th: {
     title: "คำแนะนำเพิ่มเติม",
     subtitle: "แหล่งข้อมูลอื่นๆ ที่ควรใช้คู่กับแอปนี้",
     placeholder: { name: "เร็วๆ นี้", desc: "กำลังเตรียมคำแนะนำเพิ่มเติม", cta: "ดูเพิ่มเติม" },
+    note: "เป็นบริการของบุคคลที่สาม ไม่มีส่วนเกี่ยวข้องกับ Capy GPS Simulator ชื่อและเครื่องหมายการค้าเป็นของเจ้าของแต่ละราย",
   },
   ctaBanner: { title: "พร้อมเริ่มจำลองแล้วหรือยัง", subtitle: "ดาวน์โหลดฟรีแล้วลองสร้างเส้นทางด้วย AI ได้เลยตอนนี้", button: "ดาวน์โหลดบน Google Play" },
   footer: {
@@ -1528,19 +1554,27 @@ function renderLang(lang) {
   document.getElementById("relatedSubtitle").textContent = t.related.subtitle;
   const rr = document.getElementById("relatedRow");
   rr.innerHTML = "";
-  RELATED_PRODUCTS.forEach((p) => {
+  const products = RELATED_PRODUCTS.length ? RELATED_PRODUCTS : [{ image: "assets/img/icon.png", link: "#" }];
+  products.forEach((p) => {
+    const name = p.name || t.related.placeholder.name;
+    const desc = (p.desc && typeof p.desc === "object") ? (p.desc[lang] || p.desc.en) : (p.desc || t.related.placeholder.desc);
     const card = el("a", "related-card");
     card.href = p.link || "#";
     card.target = "_blank";
     card.rel = "noopener";
-    const img = document.createElement("img");
-    img.src = p.image;
-    img.alt = p.name || t.related.placeholder.name;
-    card.appendChild(img);
-    card.appendChild(el("h3", null, p.name || t.related.placeholder.name));
-    card.appendChild(el("p", null, p.desc || t.related.placeholder.desc));
+    if (p.icon) {
+      card.appendChild(el("div", "card-icon", p.icon));
+    } else {
+      const img = document.createElement("img");
+      img.src = p.image;
+      img.alt = name;
+      card.appendChild(img);
+    }
+    card.appendChild(el("h3", null, name));
+    card.appendChild(el("p", null, desc));
     rr.appendChild(card);
   });
+  document.getElementById("relatedNote").textContent = RELATED_PRODUCTS.length ? t.related.note : "";
 
   // cta banner
   document.getElementById("ctaTitle").textContent = t.ctaBanner.title;
