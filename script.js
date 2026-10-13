@@ -15,7 +15,7 @@ const LANG_META = {
   th: { label: "ไทย", dir: "ltr" },
 };
 
-const FEATURE_ICONS = ["✨", "📡", "✏️", "🕹️", "🗺️", "📊", "🔗", "🌐"];
+const FEATURE_ICONS = ["✨", "📡", "✏️", "🕹️", "🗺️", "📊", "🔗", "📍", "⭐", "🔁", "👟", "🧹"];
 const WHY_ICONS = ["🎯", "🛠️", "🔄", "🔒"];
 const USECASE_ICONS = ["🧪", "🔁", "🗺️", "📶", "📼"];
 
@@ -39,6 +39,7 @@ zh: {
   features: {
     title: "核心功能",
     subtitle: "為 QA 測試、GIS 模擬與開發驗證而生",
+    soon: "即將推出",
     items: [
       { title: "AI 路線生成", desc: "輸入距離與行為模式，AI 自動生成通勤、漫步、跑步、觀光等真實路線，支援沿道路與迴圈路線。" },
       { title: "GPS 漂移引擎", desc: "模擬都市峽谷、訊號抖動與精確度誤差，重現真實世界的 GPS 雜訊，測試更貼近實際場景。" },
@@ -47,7 +48,11 @@ zh: {
       { title: "離線地圖", desc: "下載地圖圖磚供離線使用，無網路環境也能規劃與模擬路線。" },
       { title: "分析儀表板", desc: "完整記錄每次模擬的路徑、速度與電量消耗，可匯出 HTML 報告與 GPX 檔案。" },
       { title: "LAN 多裝置同步", desc: "透過區域網路同步多台裝置的 GPS 位置，適合多裝置協同測試。" },
-      { title: "10 種語言介面", desc: "介面支援中、英、日、韓、西、葡、印地、阿拉伯、義、泰共 10 種語言。" },
+      { title: "地點搜尋傳送", desc: "輸入地址或地名即可搜尋並傳送，自動保留最近傳送紀錄，常去的地點一鍵再傳送。", soon: true },
+      { title: "收藏標記", desc: "長按地圖收藏地點並依分類整理，數量不設上限，懸浮面板也能一鍵傳送。" },
+      { title: "循環播放與擬真速度", desc: "路線可重新開始或原路折返並設定循環次數；速度加入自然波動，移動節奏更像真人。", soon: true },
+      { title: "步數記錄與健康同步", desc: "「實際紀錄步數模式」讓計步 App 在模擬期間照常記錄；Pro 可將步數同步到 Health Connect。" },
+      { title: "填滿街道模式", desc: "自動規劃一條覆蓋範圍內所有街道的路線，適合大範圍 QA 測試，例如驗證外送／叫車 App 的定位行為（Pro）。" },
     ],
   },
   how: {
@@ -90,16 +95,27 @@ zh: {
     subtitle: "先免費體驗，需要更多再升級",
     free: {
       name: "免費版", price: "NT$0", note: "永久免費",
-      items: ["基本 AI 路線生成（含少量廣告）", "GPS 漂移基礎功能", "7 天 Analytics 紀錄", "路線繪製 / GPX 匯入匯出"],
+      items: ["基本 AI 路線生成（含少量廣告）", "GPS 漂移基礎功能", "7 天 Analytics 紀錄", "路線繪製 / GPX 匯入", "收藏標記（無數量上限）", "實際紀錄步數模式"],
       cta: "立即下載",
     },
     pro: {
       name: "Pro 版", monthly: "USD $1.99 ／月", yearly: "USD $12.00 ／年", badge: "最受歡迎",
+      lifetime: "終身版 USD $49.99（一次付費）",
       items: [
-        "所有功能完全無廣告", "AI 路線無廣告", "Premium AI 行為模式：步行 / 駕車 / 騎車 / 慢跑 / 景點巡訪",
-        "景點巡訪：真實 POI 自動排線", "GPS 漂移半徑自訂 + 都市峽谷效應", "高更新頻率（15 / 20 / 30 Hz）",
-        "Analytics 完整記錄", "GPX 路線匯出 + HTML 報告", "LAN 多裝置同步", "Google Fit / Health 步數同步",
-        "離線地圖無限區域下載", "所有未來功能優先使用",
+        "所有功能完全無廣告",
+        "AI 路線無廣告（免費版每 3 次使用需看一次廣告）",
+        "Premium AI 行為模式：步行 / 駕車 / 騎車 / 慢跑 / 景點巡訪",
+        "景點巡訪：真實 POI 自動排線",
+        "GPS 漂移半徑自訂 + 都市峽谷效應",
+        "高更新頻率（15 / 20 / 30 Hz）",
+        "Analytics 完整記錄（免費版僅 7 天）",
+        "Analytics HTML 報告匯出",
+        "GPX 路線匯出",
+        "LAN 多裝置同步",
+        "Health Connect 步數同步",
+        "離線地圖無限區域下載",
+        "填滿街道模式",
+        "所有未來功能優先使用",
       ],
       cta: "升級 Pro",
     },
@@ -113,16 +129,20 @@ zh: {
       { q: "可以匯入自己的路線嗎？", a: "可以，支援匯入 GPX 檔案（相容 Strava、Garmin 匯出格式），也能直接在地圖上繪製路線或貼上座標清單。" },
       { q: "免費版跟 Pro 版差在哪裡？", a: "免費版即可使用核心模擬與 AI 路線功能（含少量廣告），Pro 版解鎖無廣告體驗、Premium AI 行為模式、高更新頻率、LAN 同步、Google Fit 整合與離線地圖等進階功能。" },
       { q: "可以隨時取消訂閱嗎？", a: "可以，Pro 訂閱可透過 Google Play 帳戶管理隨時取消，彈性無綁約。" },
+      { q: "模擬期間，計步 App 還會記錄步數嗎？", a: "會。開啟「實際紀錄步數模式」後只模擬 GPS 定位來源，手機計步感測器照常運作，計步 App 能正常記錄你實際走的步數。" },
+      { q: "有一次買斷的方案嗎？", a: "有。除了月訂閱與年訂閱，也提供 USD $49.99 的終身版，一次付費即可永久使用所有 Pro 功能。" },
     ],
   },
   whatsNew: {
     title: "最新更新",
     subtitle: "持續改進中，以下是近期亮點",
     items: [
-      "AI 路線生成後立即在地圖上預覽，不用等到開始模擬才看得到",
-      "「更多功能」選單重新分類，找功能更快",
-      "首次使用導覽精簡為 9 個核心步驟",
-      "收藏標記新增健身房／補給站／化石 3 個分類",
+      { text: "輸入地址或地名搜尋並傳送，保留最近傳送紀錄", soon: true },
+      { text: "循環模式：重新開始或原路折返，可設定循環次數", soon: true },
+      { text: "擬真速度波動；模擬中途調整速度也會立即反映在實際移動", soon: true },
+      "實際紀錄步數模式：模擬期間計步 App 也能正常記錄步數",
+      "Pro：步數同步到 Health Connect，首次設定精靈加入授權引導",
+      "地點收藏取消數量上限，並修正路線編輯器版面跑版",
     ],
   },
   related: {
@@ -152,6 +172,7 @@ en: {
   features: {
     title: "Core Features",
     subtitle: "Built for QA testing, GIS simulation, and development verification",
+    soon: "Coming soon",
     items: [
       { title: "AI Route Generation", desc: "Set a distance and behavior mode — AI generates realistic commute, stroll, run, or sightseeing routes, with road-following and loop options." },
       { title: "GPS Drift Engine", desc: "Simulates urban canyon effects, signal jitter, and accuracy error to reproduce real-world GPS noise for more realistic testing." },
@@ -160,7 +181,11 @@ en: {
       { title: "Offline Maps", desc: "Download map tiles for offline use, so you can plan and run simulations without a network connection." },
       { title: "Analytics Dashboard", desc: "Full logging of path, speed, and battery usage for every simulation, exportable as HTML reports and GPX files." },
       { title: "LAN Multi-Device Sync", desc: "Sync GPS positions across multiple devices over a local network — ideal for coordinated multi-device testing." },
-      { title: "10-Language Interface", desc: "The interface supports Chinese, English, Japanese, Korean, Spanish, Portuguese, Hindi, Arabic, Italian, and Thai." },
+      { title: "Place search & teleport", desc: "Search any address or place name and teleport there. Recent teleports are saved so you can jump back in one tap.", soon: true },
+      { title: "Favorite markers", desc: "Long-press the map to save spots, organize them by category with no limit, and teleport from the floating panel." },
+      { title: "Loop playback & natural speed", desc: "Replay routes from the start or ping-pong back along the same path with a set loop count. Natural speed variation makes movement feel human.", soon: true },
+      { title: "Step counting & health sync", desc: "Real-step mode keeps pedometer apps counting during simulation. Pro syncs steps to Health Connect." },
+      { title: "Street Sweep Mode", desc: "Automatically plans a route that covers every street in an area — ideal for large-scale QA, such as checking delivery or ride-hailing apps (Pro)." },
     ],
   },
   how: {
@@ -203,16 +228,27 @@ en: {
     subtitle: "Start free, upgrade when you need more",
     free: {
       name: "Free", price: "$0", note: "Free forever",
-      items: ["Basic AI route generation (with occasional ads)", "Basic GPS drift", "7-day analytics history", "Route drawing / GPX import & export"],
+      items: ["Basic AI route generation (with occasional ads)", "Basic GPS drift", "7-day analytics history", "Route drawing / GPX import", "Favorite markers (unlimited)", "Real-step mode"],
       cta: "Download now",
     },
     pro: {
       name: "Pro", monthly: "USD $1.99 / month", yearly: "USD $12.00 / year", badge: "Most popular",
+      lifetime: "Lifetime USD $49.99 (one-time)",
       items: [
-        "Ad-free across the entire app", "Ad-free AI routes", "Premium AI behaviors: walking / driving / cycling / jogging / sightseeing",
-        "Sightseeing mode with real POI-based routing", "Custom GPS drift radius + urban canyon effect", "High update rate (15 / 20 / 30 Hz)",
-        "Full analytics history", "GPX export + HTML reports", "LAN multi-device sync", "Google Fit / Health step sync",
-        "Unlimited offline map downloads", "Early access to all future features",
+        "Completely ad-free",
+        "AI routes ad-free (Free: one ad every 3 uses)",
+        "Premium AI behaviors: Walking / Driving / Cycling / Jogging / Spot Tour",
+        "Spot Tour: auto-route via real POIs",
+        "Custom GPS drift radius + urban canyon effect",
+        "High update rate (15 / 20 / 30 Hz)",
+        "Full Analytics history (Free: 7 days only)",
+        "Analytics HTML report export",
+        "GPX route export",
+        "LAN multi-device sync",
+        "Health Connect step sync",
+        "Unlimited offline map regions",
+        "Street Sweep Mode",
+        "Early access to all future features",
       ],
       cta: "Upgrade to Pro",
     },
@@ -226,16 +262,20 @@ en: {
       { q: "Can I import my own routes?", a: "Yes. You can import GPX files (compatible with Strava and Garmin exports), draw routes on the map, or paste a list of coordinates." },
       { q: "What is the difference between Free and Pro?", a: "The Free tier gives you core simulation and AI route features (with occasional ads). Pro unlocks an ad-free experience, Premium AI behaviors, higher update rates, LAN sync, Google Fit integration, and offline maps." },
       { q: "Can I cancel my subscription anytime?", a: "Yes. Pro subscriptions can be cancelled anytime through your Google Play account — no long-term commitment." },
+      { q: "Will pedometer apps still count my steps during simulation?", a: "Yes. With Real-step mode on, only the GPS provider is simulated, so your phone's step sensor keeps working and pedometer apps record the steps you actually take." },
+      { q: "Is there a one-time purchase option?", a: "Yes. Besides monthly and yearly subscriptions, there is a USD $49.99 Lifetime plan — pay once and keep all Pro features forever." },
     ],
   },
   whatsNew: {
     title: "What's New",
     subtitle: "Actively improving — here are some recent highlights",
     items: [
-      "AI-generated routes now preview on the map instantly, no need to start simulating first",
-      "Reorganized the \"More\" menu so features are easier to find",
-      "Simplified the first-time tour to 9 core steps",
-      "Added 3 new favorite marker categories: Gym, Aid Station, Fossil",
+      { text: "Search an address or place name and teleport there, with recent teleport history", soon: true },
+      { text: "Loop mode: restart or ping-pong back along the route, with a set loop count", soon: true },
+      { text: "Natural speed variation; changing speed mid-simulation now takes effect immediately", soon: true },
+      "Real-step mode: pedometer apps keep counting your steps during simulation",
+      "Pro: sync steps to Health Connect, with a guided permission step in setup",
+      "No more limit on saved favorites, plus a fixed route editor layout",
     ],
   },
   related: {
@@ -265,6 +305,7 @@ ja: {
   features: {
     title: "主な機能",
     subtitle: "QAテスト・GISシミュレーション・開発検証のために設計",
+    soon: "近日公開",
     items: [
       { title: "AIルート生成", desc: "距離と行動モードを指定するだけで、通勤・散歩・ランニング・観光などリアルなルートをAIが自動生成。道路追従やループルートにも対応。" },
       { title: "GPSドリフトエンジン", desc: "都市キャニオン効果・信号のゆらぎ・精度誤差をシミュレートし、実際のGPSノイズを再現。より現実的なテストが可能に。" },
@@ -273,7 +314,11 @@ ja: {
       { title: "オフライン地図", desc: "地図タイルをダウンロードしてオフラインで使用可能。ネットワークがない環境でもルート計画・シミュレーションができます。" },
       { title: "分析ダッシュボード", desc: "各シミュレーションの経路・速度・バッテリー消費を記録し、HTMLレポートやGPXファイルとしてエクスポート。" },
       { title: "LANマルチデバイス同期", desc: "ローカルネットワーク経由で複数端末のGPS位置を同期。複数端末での協調テストに最適。" },
-      { title: "10言語インターフェース", desc: "中国語・英語・日本語・韓国語・スペイン語・ポルトガル語・ヒンディー語・アラビア語・イタリア語・タイ語の10言語に対応。" },
+      { title: "住所・地名検索テレポート", desc: "住所や地名を検索してそのままテレポート。最近のテレポート履歴を保存し、よく行く場所へワンタップで戻れます。", soon: true },
+      { title: "お気に入りマーカー", desc: "地図を長押しで地点を保存し、カテゴリ別に無制限で整理。フローティングパネルからもテレポートできます。" },
+      { title: "ループ再生とリアルな速度", desc: "ルートを最初から繰り返すか、同じ道を折り返すかを選び、ループ回数も設定可能。速度に自然な揺らぎを加え、人の動きに近づけます。", soon: true },
+      { title: "歩数記録とヘルス同期", desc: "「実歩数記録モード」でシミュレーション中も歩数計アプリが正常に記録。Pro なら歩数を Health Connect に同期。" },
+      { title: "街路網羅モード", desc: "範囲内のすべての道路を通るルートを自動作成。配達・配車アプリの位置情報検証など、広範囲の QA テストに最適（Pro）。" },
     ],
   },
   how: {
@@ -316,16 +361,27 @@ ja: {
     subtitle: "まずは無料で体験、必要に応じてアップグレード",
     free: {
       name: "無料版", price: "¥0", note: "永久無料",
-      items: ["基本的なAIルート生成（一部広告あり）", "基本的なGPSドリフト機能", "7日間の分析履歴", "ルート描画 / GPXインポート・エクスポート"],
+      items: ["基本の AI ルート生成（広告あり）", "GPS ドリフト基本機能", "7日間の Analytics 履歴", "ルート描画 / GPX インポート", "お気に入りマーカー（無制限）", "実歩数記録モード"],
       cta: "今すぐダウンロード",
     },
     pro: {
       name: "Pro版", monthly: "USD $1.99 ／月", yearly: "USD $12.00 ／年", badge: "人気No.1",
+      lifetime: "ライフタイム USD $49.99（買い切り）",
       items: [
-        "全機能広告なし", "AIルートも広告なし", "プレミアムAI行動モード：徒歩／車／自転車／ジョギング／観光巡り",
-        "観光巡り：実在POIによる自動ルート最適化", "GPSドリフト半径カスタム + 都市キャニオン効果", "高更新頻度（15／20／30Hz）",
-        "分析履歴を無期限保存", "GPXエクスポート + HTMLレポート", "LANマルチデバイス同期", "Google Fit／Health歩数連携",
-        "オフライン地図を無制限にダウンロード", "今後追加されるすべての新機能に優先アクセス",
+        "完全に広告なし",
+        "AI ルート広告なし（無料版：3回ごとに広告が必要）",
+        "Premium AI 行動モード：徒歩 / 駆動 / サイクリング / ジョギング / スポット巡り",
+        "スポット巡り：実際の POI を自動ルート化",
+        "GPS ドリフト半径カスタム + アーバンキャニオン効果",
+        "高更新レート（15 / 20 / 30 Hz）",
+        "完全な Analytics 履歴（無料：7日間のみ）",
+        "Analytics HTML レポートエクスポート",
+        "GPX ルートエクスポート",
+        "LAN マルチデバイス同期",
+        "Health Connect 歩数同期",
+        "オフラインマップ無制限ダウンロード",
+        "街路網羅モード",
+        "将来のすべての機能への早期アクセス",
       ],
       cta: "Proにアップグレード",
     },
@@ -339,16 +395,20 @@ ja: {
       { q: "自分のルートをインポートできますか？", a: "はい。Strava・Garmin互換のGPXファイルのインポート、地図上での描画、座標リストの貼り付けによるルート作成に対応しています。" },
       { q: "無料版とPro版の違いは？", a: "無料版でも基本的なシミュレーションとAIルート機能（一部広告あり）を利用できます。Pro版では広告なし体験、プレミアムAI行動モード、高更新頻度、LAN同期、Google Fit連携、オフライン地図などが解放されます。" },
       { q: "いつでも解約できますか？", a: "はい。Proサブスクリプションはいつでも Google Play アカウントから解約でき、縛りはありません。" },
+      { q: "シミュレーション中も歩数計アプリは歩数を記録しますか？", a: "はい。「実歩数記録モード」をオンにすると GPS 測位のみを模擬するため、端末の歩数センサーはそのまま動作し、歩数計アプリは実際に歩いた歩数を記録します。" },
+      { q: "買い切りプランはありますか？", a: "はい。月額・年額プランに加え、USD $49.99 のライフタイムプランがあり、一度の支払いですべての Pro 機能を永久に利用できます。" },
     ],
   },
   whatsNew: {
     title: "最新アップデート",
     subtitle: "継続的に改善中。最近の主なハイライトはこちら",
     items: [
-      "AIルート生成後すぐに地図上でプレビュー可能に、シミュレーション開始を待つ必要なし",
-      "「その他の機能」メニューを再分類し、機能を見つけやすく改善",
-      "初回チュートリアルをコア9ステップに簡素化",
-      "お気に入りマーカーに新しい3カテゴリを追加：ジム／補給ポイント／化石",
+      { text: "住所や地名を検索してテレポート、最近の履歴も保存", soon: true },
+      { text: "ループモード：最初から繰り返す／同じ道を折り返す、回数も設定可能", soon: true },
+      { text: "リアルな速度の揺らぎ。シミュレーション中の速度変更も即座に反映", soon: true },
+      "実歩数記録モード：シミュレーション中も歩数計アプリが歩数を記録",
+      "Pro：歩数を Health Connect に同期、初回セットアップに権限ガイドを追加",
+      "お気に入りの登録数上限を撤廃、ルートエディタのレイアウト崩れを修正",
     ],
   },
   related: {
@@ -378,6 +438,7 @@ ko: {
   features: {
     title: "핵심 기능",
     subtitle: "QA 테스트, GIS 시뮬레이션, 개발 검증을 위해 설계됨",
+    soon: "출시 예정",
     items: [
       { title: "AI 경로 생성", desc: "거리와 행동 모드를 설정하면 AI가 출퇴근, 산책, 러닝, 관광 등 현실적인 경로를 자동 생성합니다. 도로 추적 및 루프 경로도 지원합니다." },
       { title: "GPS 드리프트 엔진", desc: "도심 협곡 효과, 신호 떨림, 정확도 오차를 시뮬레이션하여 실제 GPS 노이즈를 재현, 더욱 사실적인 테스트가 가능합니다." },
@@ -386,7 +447,11 @@ ko: {
       { title: "오프라인 지도", desc: "지도 타일을 다운로드하여 오프라인으로 사용할 수 있어, 네트워크가 없는 환경에서도 경로 계획과 시뮬레이션이 가능합니다." },
       { title: "분석 대시보드", desc: "매 시뮬레이션의 경로, 속도, 배터리 소모량을 완전히 기록하고 HTML 보고서와 GPX 파일로 내보낼 수 있습니다." },
       { title: "LAN 다중 기기 동기화", desc: "로컬 네트워크를 통해 여러 기기의 GPS 위치를 동기화하여 다중 기기 협업 테스트에 적합합니다." },
-      { title: "10개 언어 인터페이스", desc: "중국어, 영어, 일본어, 한국어, 스페인어, 포르투갈어, 힌디어, 아랍어, 이탈리아어, 태국어 총 10개 언어를 지원합니다." },
+      { title: "장소 검색 순간이동", desc: "주소나 장소 이름을 검색해 바로 순간이동. 최근 이동 기록이 저장되어 자주 가는 곳으로 한 번에 돌아갈 수 있습니다.", soon: true },
+      { title: "즐겨찾기 마커", desc: "지도를 길게 눌러 장소를 저장하고 카테고리별로 제한 없이 정리. 플로팅 패널에서도 바로 이동할 수 있습니다." },
+      { title: "반복 재생과 자연스러운 속도", desc: "경로를 처음부터 반복하거나 같은 길로 왕복하며 반복 횟수도 설정 가능. 속도에 자연스러운 변화를 더해 사람처럼 움직입니다.", soon: true },
+      { title: "걸음 수 기록과 헬스 동기화", desc: "'실제 걸음 수 기록 모드'로 시뮬레이션 중에도 만보기 앱이 정상 기록. Pro는 걸음 수를 Health Connect에 동기화합니다." },
+      { title: "거리 완주 모드", desc: "범위 내 모든 거리를 지나는 경로를 자동 생성합니다. 배달·택시 앱 위치 검증 등 대규모 QA 테스트에 적합합니다 (Pro)." },
     ],
   },
   how: {
@@ -429,16 +494,27 @@ ko: {
     subtitle: "무료로 먼저 체험하고, 필요할 때 업그레이드하세요",
     free: {
       name: "무료", price: "₩0", note: "영구 무료",
-      items: ["기본 AI 경로 생성 (일부 광고 포함)", "기본 GPS 드리프트 기능", "7일간 분석 기록", "경로 그리기 / GPX 가져오기·내보내기"],
+      items: ["기본 AI 경로 생성 (광고 포함)", "기본 GPS 드리프트", "7일 Analytics 기록", "경로 그리기 / GPX 가져오기", "즐겨찾기 마커 (무제한)", "실제 걸음 수 기록 모드"],
       cta: "지금 다운로드",
     },
     pro: {
       name: "Pro", monthly: "USD $1.99 / 월", yearly: "USD $12.00 / 년", badge: "가장 인기",
+      lifetime: "평생 플랜 USD $49.99 (1회 결제)",
       items: [
-        "전체 앱 광고 제거", "AI 경로 광고 제거", "프리미엄 AI 행동 모드: 도보 / 운전 / 자전거 / 조깅 / 관광",
-        "관광 모드: 실제 POI 기반 자동 경로 최적화", "GPS 드리프트 반경 커스텀 + 도심 협곡 효과", "높은 업데이트 빈도 (15 / 20 / 30 Hz)",
-        "전체 분석 기록 보관", "GPX 내보내기 + HTML 보고서", "LAN 다중 기기 동기화", "Google Fit / Health 걸음수 동기화",
-        "무제한 오프라인 지도 다운로드", "모든 향후 신기능 우선 이용",
+        "완전한 광고 없음",
+        "AI 경로 광고 없음（무료：3회마다 광고 필요）",
+        "Premium AI 행동 모드：도보 / 주행 / 자전거 / 조깅 / 관광지 투어",
+        "관광지 투어：실제 POI로 자동 경로 생성",
+        "맞춤형 GPS 드리프트 반경 + 도시 협곡 효과",
+        "고속 업데이트（15 / 20 / 30 Hz）",
+        "완전한 Analytics 기록（무료：7일만）",
+        "Analytics HTML 보고서 내보내기",
+        "GPX 경로 내보내기",
+        "LAN 다중 기기 동기화",
+        "Health Connect 걸음 수 동기화",
+        "무제한 오프라인 지도 다운로드",
+        "거리 완주 모드",
+        "모든 미래 기능 우선 이용",
       ],
       cta: "Pro로 업그레이드",
     },
@@ -452,16 +528,20 @@ ko: {
       { q: "직접 만든 경로를 가져올 수 있나요?", a: "네, Strava, Garmin과 호환되는 GPX 파일 가져오기를 지원하며, 지도에서 직접 경로를 그리거나 좌표 목록을 붙여넣어 경로를 만들 수도 있습니다." },
       { q: "무료 버전과 Pro 버전의 차이는 무엇인가요?", a: "무료 버전에서도 핵심 시뮬레이션과 AI 경로 기능(일부 광고 포함)을 사용할 수 있습니다. Pro 버전은 광고 없는 경험, 프리미엄 AI 행동 모드, 높은 업데이트 빈도, LAN 동기화, Google Fit 연동, 오프라인 지도 등을 제공합니다." },
       { q: "언제든지 구독을 취소할 수 있나요?", a: "네, Pro 구독은 Google Play 계정 관리에서 언제든지 취소할 수 있으며 별도의 약정이 없습니다." },
+      { q: "시뮬레이션 중에도 만보기 앱이 걸음 수를 기록하나요?", a: "네. '실제 걸음 수 기록 모드'를 켜면 GPS 위치 소스만 시뮬레이션하므로 휴대폰의 걸음 센서는 그대로 작동하고, 만보기 앱이 실제로 걸은 걸음 수를 기록합니다." },
+      { q: "한 번 결제로 계속 쓰는 플랜이 있나요?", a: "네. 월간·연간 구독 외에 USD $49.99 평생 플랜이 있어 한 번 결제로 모든 Pro 기능을 영구히 사용할 수 있습니다." },
     ],
   },
   whatsNew: {
     title: "최신 업데이트",
     subtitle: "지속적으로 개선 중입니다. 최근 주요 변경사항입니다",
     items: [
-      "AI 경로 생성 후 시뮬레이션 시작 전에도 지도에서 바로 미리보기 가능",
-      "'더 많은 기능' 메뉴를 재분류하여 기능을 더 빠르게 찾을 수 있도록 개선",
-      "최초 튜토리얼을 핵심 9단계로 간소화",
-      "즐겨찾기 마커에 새 카테고리 3개 추가: 헬스장／보급소／화석",
+      { text: "주소나 장소 이름을 검색해 순간이동, 최근 이동 기록 저장", soon: true },
+      { text: "반복 모드: 처음부터 다시 또는 같은 길로 왕복, 반복 횟수 설정 가능", soon: true },
+      { text: "자연스러운 속도 변화, 시뮬레이션 중 속도 변경도 즉시 반영", soon: true },
+      "실제 걸음 수 기록 모드: 시뮬레이션 중에도 만보기 앱이 걸음 수 기록",
+      "Pro: 걸음 수를 Health Connect에 동기화, 초기 설정에 권한 안내 추가",
+      "즐겨찾기 개수 제한 해제, 경로 편집기 레이아웃 깨짐 수정",
     ],
   },
   related: {
@@ -491,6 +571,7 @@ es: {
   features: {
     title: "Funciones principales",
     subtitle: "Diseñado para pruebas de QA, simulación GIS y verificación de desarrollo",
+    soon: "Próximamente",
     items: [
       { title: "Generación de rutas con IA", desc: "Indica una distancia y un modo de comportamiento: la IA genera rutas realistas de trayecto, paseo, carrera o turismo, con opción de seguir carreteras o crear bucles." },
       { title: "Motor de deriva GPS", desc: "Simula el efecto cañón urbano, fluctuaciones de señal y errores de precisión para reproducir el ruido GPS del mundo real." },
@@ -499,7 +580,11 @@ es: {
       { title: "Mapas sin conexión", desc: "Descarga los mosaicos del mapa para usarlos sin conexión y así planificar y ejecutar simulaciones sin red." },
       { title: "Panel de análisis", desc: "Registro completo de ruta, velocidad y consumo de batería de cada simulación, exportable como informes HTML y archivos GPX." },
       { title: "Sincronización LAN multidispositivo", desc: "Sincroniza la posición GPS entre varios dispositivos a través de la red local, ideal para pruebas coordinadas." },
-      { title: "Interfaz en 10 idiomas", desc: "La interfaz admite chino, inglés, japonés, coreano, español, portugués, hindi, árabe, italiano y tailandés." },
+      { title: "Buscar lugar y teletransportarse", desc: "Busca cualquier dirección o lugar y teletranspórtate. Se guardan los teletransportes recientes para volver con un toque.", soon: true },
+      { title: "Marcadores favoritos", desc: "Mantén pulsado el mapa para guardar lugares, organízalos por categoría sin límite y teletranspórtate desde el panel flotante." },
+      { title: "Bucle y velocidad natural", desc: "Repite rutas desde el inicio o ida y vuelta por el mismo camino, con número de vueltas configurable. La variación natural de velocidad hace el movimiento más humano.", soon: true },
+      { title: "Pasos y sincronización de salud", desc: "El modo de pasos reales mantiene el conteo de las apps de podómetro durante la simulación. Pro sincroniza pasos con Health Connect." },
+      { title: "Modo Barrido de Calles", desc: "Planifica automáticamente una ruta que recorre todas las calles de una zona, ideal para QA a gran escala como apps de reparto o transporte (Pro)." },
     ],
   },
   how: {
@@ -542,16 +627,27 @@ es: {
     subtitle: "Empieza gratis y mejora cuando lo necesites",
     free: {
       name: "Gratis", price: "0 €", note: "Gratis para siempre",
-      items: ["Generación de rutas con IA básica (con anuncios ocasionales)", "Deriva GPS básica", "Historial de análisis de 7 días", "Dibujo de rutas / Importar y exportar GPX"],
+      items: ["Generación básica de rutas IA (con anuncios)", "Deriva GPS básica", "Historial Analytics de 7 días", "Dibujo de rutas / importación GPX", "Marcadores favoritos (ilimitados)", "Modo de pasos reales"],
       cta: "Descargar ahora",
     },
     pro: {
       name: "Pro", monthly: "USD $1.99 / mes", yearly: "USD $12.00 / año", badge: "Más popular",
+      lifetime: "De por vida USD $49.99 (pago único)",
       items: [
-        "Toda la app sin anuncios", "Rutas de IA sin anuncios", "Comportamientos IA Premium: caminar / conducir / bicicleta / correr / turismo",
-        "Modo turismo con rutas automáticas basadas en POI reales", "Radio de deriva GPS personalizable + efecto cañón urbano", "Frecuencia de actualización alta (15 / 20 / 30 Hz)",
-        "Historial de análisis completo", "Exportación GPX + informes HTML", "Sincronización LAN multidispositivo", "Sincronización de pasos con Google Fit / Health",
-        "Descargas de mapas sin conexión ilimitadas", "Acceso anticipado a todas las funciones futuras",
+        "Completamente sin anuncios",
+        "Rutas IA sin anuncios（Gratis：anuncio cada 3 usos）",
+        "Modos IA Premium：Caminar / Conducir / Ciclismo / Jogging / Tour de lugares",
+        "Tour de lugares：ruta automática con POIs reales",
+        "Radio de deriva GPS personalizado + efecto cañón urbano",
+        "Alta tasa de actualización（15 / 20 / 30 Hz）",
+        "Historial Analytics completo（Gratis：solo 7 días）",
+        "Exportar informe HTML de Analytics",
+        "Exportar ruta GPX",
+        "Sincronización LAN multi-dispositivo",
+        "Sincronización de pasos con Health Connect",
+        "Descargas de mapas sin conexión ilimitadas",
+        "Modo Barrido de Calles",
+        "Acceso anticipado a todas las funciones futuras",
       ],
       cta: "Mejorar a Pro",
     },
@@ -565,16 +661,20 @@ es: {
       { q: "¿Puedo importar mis propias rutas?", a: "Sí. Puedes importar archivos GPX (compatibles con exportaciones de Strava y Garmin), dibujar rutas en el mapa o pegar una lista de coordenadas." },
       { q: "¿Cuál es la diferencia entre la versión gratuita y Pro?", a: "La versión gratuita incluye la simulación principal y las rutas con IA (con anuncios ocasionales). Pro desbloquea una experiencia sin anuncios, comportamientos IA Premium, mayor frecuencia de actualización, sincronización LAN, integración con Google Fit y mapas sin conexión." },
       { q: "¿Puedo cancelar la suscripción en cualquier momento?", a: "Sí. Las suscripciones Pro se pueden cancelar en cualquier momento desde tu cuenta de Google Play, sin permanencia." },
+      { q: "¿Las apps de podómetro siguen contando pasos durante la simulación?", a: "Sí. Con el modo de pasos reales activado solo se simula el proveedor GPS, así que el sensor de pasos del teléfono sigue funcionando y las apps de podómetro registran los pasos que realmente das." },
+      { q: "¿Hay una opción de pago único?", a: "Sí. Además de las suscripciones mensual y anual, existe el plan De por vida por USD $49.99: pagas una vez y conservas todas las funciones Pro para siempre." },
     ],
   },
   whatsNew: {
     title: "Novedades",
     subtitle: "Mejorando constantemente — estos son algunos aspectos destacados recientes",
     items: [
-      "Las rutas generadas por IA ahora se previsualizan en el mapa al instante, sin esperar a iniciar la simulación",
-      "Se reorganizó el menú \"Más\" para encontrar funciones más rápido",
-      "Tutorial inicial simplificado a 9 pasos clave",
-      "Se añadieron 3 nuevas categorías de marcadores favoritos: Gimnasio, Punto de abastecimiento, Fósil",
+      { text: "Busca una dirección o lugar y teletranspórtate, con historial de teletransportes recientes", soon: true },
+      { text: "Modo bucle: reiniciar o ida y vuelta por la ruta, con número de vueltas", soon: true },
+      { text: "Variación natural de velocidad; cambiar la velocidad durante la simulación ahora se aplica al instante", soon: true },
+      "Modo de pasos reales: las apps de podómetro siguen contando durante la simulación",
+      "Pro: sincroniza pasos con Health Connect, con guía de permisos en la configuración inicial",
+      "Sin límite de favoritos guardados y diseño del editor de rutas corregido",
     ],
   },
   related: {
@@ -604,6 +704,7 @@ pt: {
   features: {
     title: "Principais recursos",
     subtitle: "Criado para testes de QA, simulação GIS e verificação de desenvolvimento",
+    soon: "Em breve",
     items: [
       { title: "Geração de rotas com IA", desc: "Defina distância e modo de comportamento e a IA gera rotas realistas de deslocamento, caminhada, corrida ou turismo, com opção de seguir vias ou criar loops." },
       { title: "Motor de deriva GPS", desc: "Simula o efeito de cânion urbano, oscilações de sinal e erros de precisão para reproduzir o ruído real do GPS." },
@@ -612,7 +713,11 @@ pt: {
       { title: "Mapas offline", desc: "Baixe os blocos do mapa para uso offline, permitindo planejar e executar simulações sem conexão de rede." },
       { title: "Painel de análises", desc: "Registro completo de rota, velocidade e consumo de bateria de cada simulação, exportável como relatórios HTML e arquivos GPX." },
       { title: "Sincronização multidispositivo via LAN", desc: "Sincronize a posição GPS entre vários dispositivos pela rede local, ideal para testes coordenados." },
-      { title: "Interface em 10 idiomas", desc: "A interface é compatível com chinês, inglês, japonês, coreano, espanhol, português, hindi, árabe, italiano e tailandês." },
+      { title: "Buscar local e teletransportar", desc: "Pesquise qualquer endereço ou local e teletransporte-se. Os teletransportes recentes ficam salvos para voltar com um toque.", soon: true },
+      { title: "Marcadores favoritos", desc: "Toque e segure no mapa para salvar locais, organize por categoria sem limite e teletransporte-se pelo painel flutuante." },
+      { title: "Loop e velocidade natural", desc: "Repita rotas do início ou em ida e volta pelo mesmo caminho, com número de voltas configurável. A variação natural de velocidade deixa o movimento mais humano.", soon: true },
+      { title: "Passos e sincronização de saúde", desc: "O modo de passos reais mantém os apps de pedômetro contando durante a simulação. O Pro sincroniza passos com Health Connect." },
+      { title: "Modo Varredura de Ruas", desc: "Planeja automaticamente uma rota que cobre todas as ruas de uma área, ideal para QA em larga escala, como apps de entrega ou transporte (Pro)." },
     ],
   },
   how: {
@@ -655,16 +760,27 @@ pt: {
     subtitle: "Comece grátis, faça upgrade quando precisar",
     free: {
       name: "Grátis", price: "R$0", note: "Grátis para sempre",
-      items: ["Geração básica de rotas com IA (com anúncios ocasionais)", "Deriva GPS básica", "Histórico de análises de 7 dias", "Desenho de rotas / Importação e exportação GPX"],
+      items: ["Geração básica de rotas de IA (com anúncios)", "Deriva GPS básica", "Histórico Analytics de 7 dias", "Desenho de rotas / importação GPX", "Marcadores favoritos (ilimitados)", "Modo de passos reais"],
       cta: "Baixar agora",
     },
     pro: {
       name: "Pro", monthly: "USD $1.99 / mês", yearly: "USD $12.00 / ano", badge: "Mais popular",
+      lifetime: "Vitalício USD $49,99 (pagamento único)",
       items: [
-        "App inteiro sem anúncios", "Rotas de IA sem anúncios", "Comportamentos IA Premium: caminhada / direção / ciclismo / corrida / turismo",
-        "Modo turismo com roteirização automática baseada em POIs reais", "Raio de deriva GPS personalizável + efeito de cânion urbano", "Alta taxa de atualização (15 / 20 / 30 Hz)",
-        "Histórico de análises completo", "Exportação GPX + relatórios HTML", "Sincronização multidispositivo via LAN", "Sincronização de passos com Google Fit / Health",
-        "Downloads ilimitados de mapas offline", "Acesso antecipado a todos os recursos futuros",
+        "Totalmente sem anúncios",
+        "Rotas de IA sem anúncios (Grátis: anúncio a cada 3 usos)",
+        "Modos de IA Premium: Caminhada / Condução / Ciclismo / Corrida Leve / Tour de Pontos",
+        "Tour de Pontos: rota automática com POIs reais",
+        "Raio de deriva GPS personalizado + efeito de cânion urbano",
+        "Alta taxa de atualização (15 / 20 / 30 Hz)",
+        "Histórico completo do Analytics (Grátis: apenas 7 dias)",
+        "Exportação de relatório HTML do Analytics",
+        "Exportação de rota GPX",
+        "Sincronização LAN multi-dispositivo",
+        "Sincronização de passos com Health Connect",
+        "Downloads ilimitados de regiões de mapa offline",
+        "Modo Varredura de Ruas",
+        "Acesso antecipado a todos os recursos futuros",
       ],
       cta: "Fazer upgrade para Pro",
     },
@@ -678,16 +794,20 @@ pt: {
       { q: "Posso importar minhas próprias rotas?", a: "Sim. Você pode importar arquivos GPX (compatíveis com exportações do Strava e Garmin), desenhar rotas no mapa ou colar uma lista de coordenadas." },
       { q: "Qual a diferença entre a versão gratuita e a Pro?", a: "A versão gratuita já oferece a simulação principal e as rotas com IA (com anúncios ocasionais). A Pro desbloqueia uma experiência sem anúncios, comportamentos IA Premium, taxa de atualização mais alta, sincronização LAN, integração com Google Fit e mapas offline." },
       { q: "Posso cancelar a assinatura a qualquer momento?", a: "Sim. As assinaturas Pro podem ser canceladas a qualquer momento pela sua conta do Google Play, sem fidelidade." },
+      { q: "Os apps de pedômetro continuam contando passos durante a simulação?", a: "Sim. Com o modo de passos reais ativado, apenas o provedor GPS é simulado, então o sensor de passos do celular continua funcionando e os apps de pedômetro registram os passos que você realmente dá." },
+      { q: "Existe uma opção de pagamento único?", a: "Sim. Além das assinaturas mensal e anual, há o plano Vitalício por USD $49,99: pague uma vez e mantenha todos os recursos Pro para sempre." },
     ],
   },
   whatsNew: {
     title: "Novidades",
     subtitle: "Melhorando continuamente — confira alguns destaques recentes",
     items: [
-      "Rotas geradas por IA agora aparecem em pré-visualização no mapa instantaneamente, sem precisar iniciar a simulação",
-      "Menu \"Mais\" reorganizado para encontrar recursos mais rápido",
-      "Tutorial inicial simplificado para 9 passos essenciais",
-      "Adicionadas 3 novas categorias de marcadores favoritos: Academia, Ponto de Apoio, Fóssil",
+      { text: "Pesquise um endereço ou local e teletransporte-se, com histórico de teletransportes recentes", soon: true },
+      { text: "Modo loop: reiniciar ou ida e volta pela rota, com número de voltas", soon: true },
+      { text: "Variação natural de velocidade; mudar a velocidade durante a simulação agora tem efeito imediato", soon: true },
+      "Modo de passos reais: apps de pedômetro continuam contando durante a simulação",
+      "Pro: sincronize passos com Health Connect, com guia de permissões na configuração inicial",
+      "Sem limite de favoritos salvos e layout do editor de rotas corrigido",
     ],
   },
   related: {
@@ -717,6 +837,7 @@ it: {
   features: {
     title: "Funzionalità principali",
     subtitle: "Pensato per test QA, simulazioni GIS e verifica dello sviluppo",
+    soon: "In arrivo",
     items: [
       { title: "Generazione percorsi con IA", desc: "Imposta distanza e modalità di comportamento: l'IA genera percorsi realistici per tragitti, passeggiate, corse o turismo, con opzione di seguire le strade o creare percorsi ad anello." },
       { title: "Motore di deriva GPS", desc: "Simula l'effetto canyon urbano, le fluttuazioni del segnale e gli errori di precisione per riprodurre il rumore GPS reale." },
@@ -725,7 +846,11 @@ it: {
       { title: "Mappe offline", desc: "Scarica i tile della mappa per l'uso offline, così puoi pianificare ed eseguire simulazioni anche senza connessione." },
       { title: "Dashboard di analisi", desc: "Registrazione completa di percorso, velocità e consumo della batteria per ogni simulazione, esportabile come report HTML e file GPX." },
       { title: "Sincronizzazione LAN multi-dispositivo", desc: "Sincronizza la posizione GPS tra più dispositivi tramite rete locale, ideale per test coordinati." },
-      { title: "Interfaccia in 10 lingue", desc: "L'interfaccia supporta cinese, inglese, giapponese, coreano, spagnolo, portoghese, hindi, arabo, italiano e thailandese." },
+      { title: "Cerca luogo e teletrasporto", desc: "Cerca qualsiasi indirizzo o luogo e teletrasportati. I teletrasporti recenti vengono salvati per tornarci con un tocco.", soon: true },
+      { title: "Segnaposto preferiti", desc: "Tieni premuto sulla mappa per salvare luoghi, organizzali per categoria senza limiti e teletrasportati dal pannello flottante." },
+      { title: "Loop e velocità naturale", desc: "Ripeti i percorsi dall'inizio o avanti e indietro sullo stesso tragitto, con numero di ripetizioni impostabile. La variazione naturale della velocità rende il movimento più umano.", soon: true },
+      { title: "Passi e sincronizzazione salute", desc: "La modalità passi reali permette alle app contapassi di continuare a contare durante la simulazione. Pro sincronizza i passi con Health Connect." },
+      { title: "Modalità Copertura Strade", desc: "Pianifica automaticamente un percorso che copre tutte le strade di un'area, ideale per QA su larga scala come app di consegna o ride-hailing (Pro)." },
     ],
   },
   how: {
@@ -768,16 +893,27 @@ it: {
     subtitle: "Inizia gratis, esegui l'upgrade quando ti serve di più",
     free: {
       name: "Gratuito", price: "0 €", note: "Gratis per sempre",
-      items: ["Generazione base di percorsi con IA (con annunci occasionali)", "Deriva GPS di base", "Cronologia analisi di 7 giorni", "Disegno percorsi / Importazione ed esportazione GPX"],
+      items: ["Generazione percorsi IA di base (con pubblicità)", "Deriva GPS di base", "Cronologia Analytics di 7 giorni", "Disegno percorsi / importazione GPX", "Segnaposto preferiti (illimitati)", "Modalità passi reali"],
       cta: "Scarica ora",
     },
     pro: {
       name: "Pro", monthly: "USD $1.99 / mese", yearly: "USD $12.00 / anno", badge: "Più popolare",
+      lifetime: "A Vita USD $49,99 (pagamento unico)",
       items: [
-        "App interamente senza pubblicità", "Percorsi IA senza pubblicità", "Comportamenti IA Premium: a piedi / in auto / in bici / jogging / turismo",
-        "Modalità turismo con percorso automatico su POI reali", "Raggio di deriva GPS personalizzabile + effetto canyon urbano", "Frequenza di aggiornamento alta (15 / 20 / 30 Hz)",
-        "Cronologia analisi completa", "Esportazione GPX + report HTML", "Sincronizzazione LAN multi-dispositivo", "Sincronizzazione passi con Google Fit / Health",
-        "Download di mappe offline illimitati", "Accesso anticipato a tutte le funzionalità future",
+        "Completamente senza pubblicità",
+        "Percorsi IA senza pubblicità (Gratis: pubblicità ogni 3 utilizzi)",
+        "Modalità IA Premium: Camminata / Guida / Ciclismo / Jogging / Tour dei Luoghi",
+        "Tour dei Luoghi: percorso automatico con POI reali",
+        "Raggio di deriva GPS personalizzato + effetto canyon urbano",
+        "Frequenza di aggiornamento elevata (15 / 20 / 30 Hz)",
+        "Cronologia Analytics completa (Gratis: solo 7 giorni)",
+        "Esportazione report HTML Analytics",
+        "Esportazione percorso GPX",
+        "Sincronizzazione LAN multi-dispositivo",
+        "Sincronizzazione passi con Health Connect",
+        "Download illimitati di regioni mappa offline",
+        "Modalità Copertura Strade",
+        "Accesso anticipato a tutte le funzionalità future",
       ],
       cta: "Passa a Pro",
     },
@@ -791,16 +927,20 @@ it: {
       { q: "Posso importare i miei percorsi?", a: "Sì. Puoi importare file GPX (compatibili con le esportazioni di Strava e Garmin), disegnare percorsi sulla mappa o incollare un elenco di coordinate." },
       { q: "Qual è la differenza tra versione gratuita e Pro?", a: "La versione gratuita offre già simulazione principale e percorsi IA (con annunci occasionali). Pro sblocca un'esperienza senza pubblicità, comportamenti IA Premium, frequenza di aggiornamento più alta, sincronizzazione LAN, integrazione Google Fit e mappe offline." },
       { q: "Posso annullare l'abbonamento in qualsiasi momento?", a: "Sì. Gli abbonamenti Pro possono essere annullati in qualsiasi momento dal tuo account Google Play, senza vincoli." },
+      { q: "Le app contapassi continuano a contare i passi durante la simulazione?", a: "Sì. Con la modalità passi reali attiva viene simulato solo il provider GPS, quindi il sensore di passi del telefono continua a funzionare e le app contapassi registrano i passi che fai davvero." },
+      { q: "Esiste un'opzione di acquisto unico?", a: "Sì. Oltre agli abbonamenti mensile e annuale c'è il piano A Vita a USD $49,99: paghi una volta e mantieni per sempre tutte le funzioni Pro." },
     ],
   },
   whatsNew: {
     title: "Novità",
     subtitle: "Miglioriamo costantemente — ecco alcune novità recenti",
     items: [
-      "I percorsi generati dall'IA ora mostrano un'anteprima sulla mappa istantaneamente, senza attendere l'avvio della simulazione",
-      "Menu \"Altro\" riorganizzato per trovare le funzionalità più velocemente",
-      "Tutorial iniziale semplificato a 9 passaggi chiave",
-      "Aggiunte 3 nuove categorie di segnaposto preferiti: Palestra, Punto di rifornimento, Fossile",
+      { text: "Cerca un indirizzo o luogo e teletrasportati, con cronologia dei teletrasporti recenti", soon: true },
+      { text: "Modalità loop: ricomincia o avanti e indietro sul percorso, con numero di ripetizioni", soon: true },
+      { text: "Variazione naturale della velocità; cambiare velocità durante la simulazione ora ha effetto immediato", soon: true },
+      "Modalità passi reali: le app contapassi continuano a contare durante la simulazione",
+      "Pro: sincronizza i passi con Health Connect, con guida ai permessi nella configurazione iniziale",
+      "Nessun limite ai preferiti salvati e layout dell'editor percorsi corretto",
     ],
   },
   related: {
@@ -830,6 +970,7 @@ hi: {
   features: {
     title: "मुख्य सुविधाएं",
     subtitle: "QA टेस्टिंग, GIS सिमुलेशन और डेवलपमेंट सत्यापन के लिए बनाया गया",
+    soon: "जल्द आ रहा है",
     items: [
       { title: "AI रूट जनरेशन", desc: "दूरी और व्यवहार मोड सेट करें — AI यथार्थवादी आवागमन, सैर, दौड़ या पर्यटन रूट बनाता है, सड़क-अनुसरण और लूप विकल्पों के साथ।" },
       { title: "GPS ड्रिफ्ट इंजन", desc: "शहरी कैन्यन प्रभाव, सिग्नल में उतार-चढ़ाव और सटीकता त्रुटि का अनुकरण करके वास्तविक GPS शोर को फिर से बनाता है।" },
@@ -838,7 +979,11 @@ hi: {
       { title: "ऑफ़लाइन मानचित्र", desc: "ऑफ़लाइन उपयोग के लिए मानचित्र टाइल डाउनलोड करें, ताकि बिना नेटवर्क के भी रूट योजना और सिमुलेशन किया जा सके।" },
       { title: "एनालिटिक्स डैशबोर्ड", desc: "हर सिमुलेशन के रूट, स्पीड और बैटरी उपयोग का पूरा रिकॉर्ड, जिसे HTML रिपोर्ट और GPX फ़ाइल के रूप में निर्यात किया जा सकता है।" },
       { title: "LAN मल्टी-डिवाइस सिंक", desc: "लोकल नेटवर्क के ज़रिए कई डिवाइसों की GPS लोकेशन सिंक करें — मल्टी-डिवाइस टेस्टिंग के लिए आदर्श।" },
-      { title: "10 भाषाओं का इंटरफ़ेस", desc: "इंटरफ़ेस चीनी, अंग्रेज़ी, जापानी, कोरियाई, स्पेनिश, पुर्तगाली, हिंदी, अरबी, इतालवी और थाई सहित 10 भाषाओं में उपलब्ध है।" },
+      { title: "स्थान खोजें और टेलीपोर्ट करें", desc: "कोई भी पता या स्थान का नाम खोजें और वहाँ टेलीपोर्ट करें। हाल के टेलीपोर्ट सहेजे जाते हैं ताकि आप एक टैप में वापस जा सकें।", soon: true },
+      { title: "पसंदीदा मार्कर", desc: "मानचित्र पर लंबा दबाकर स्थान सहेजें, बिना सीमा के श्रेणी के अनुसार व्यवस्थित करें, और फ़्लोटिंग पैनल से टेलीपोर्ट करें।" },
+      { title: "लूप प्लेबैक और स्वाभाविक गति", desc: "मार्ग को शुरू से दोहराएँ या उसी रास्ते पर आगे-पीछे चलें, लूप संख्या भी तय करें। गति में स्वाभाविक उतार-चढ़ाव से चाल इंसान जैसी लगती है।", soon: true },
+      { title: "कदम गिनती और हेल्थ सिंक", desc: "वास्तविक कदम मोड में सिमुलेशन के दौरान भी पेडोमीटर ऐप कदम गिनते रहते हैं। Pro में कदम Health Connect से सिंक होते हैं।" },
+      { title: "स्ट्रीट स्वीप मोड", desc: "किसी क्षेत्र की सभी सड़कों को कवर करने वाला मार्ग स्वचालित रूप से बनाता है — डिलीवरी या राइड-हेलिंग ऐप जैसे बड़े QA परीक्षण के लिए आदर्श (Pro)।" },
     ],
   },
   how: {
@@ -881,16 +1026,27 @@ hi: {
     subtitle: "मुफ़्त में शुरू करें, ज़रूरत पड़ने पर अपग्रेड करें",
     free: {
       name: "मुफ़्त", price: "₹0", note: "हमेशा के लिए मुफ़्त",
-      items: ["बेसिक AI रूट जनरेशन (कुछ विज्ञापनों सहित)", "बेसिक GPS ड्रिफ्ट", "7-दिन का एनालिटिक्स इतिहास", "रूट ड्रॉइंग / GPX आयात-निर्यात"],
+      items: ["बुनियादी AI मार्ग निर्माण (विज्ञापनों सहित)", "बुनियादी GPS ड्रिफ्ट", "7 दिन का Analytics इतिहास", "मार्ग बनाना / GPX आयात", "पसंदीदा मार्कर (असीमित)", "वास्तविक कदम मोड"],
       cta: "अभी डाउनलोड करें",
     },
     pro: {
       name: "Pro", monthly: "USD $1.99 / माह", yearly: "USD $12.00 / वर्ष", badge: "सबसे लोकप्रिय",
+      lifetime: "लाइफटाइम USD $49.99 (एकमुश्त भुगतान)",
       items: [
-        "पूरा ऐप बिना विज्ञापन", "AI रूट बिना विज्ञापन", "प्रीमियम AI व्यवहार: पैदल / ड्राइविंग / साइकिलिंग / जॉगिंग / पर्यटन",
-        "पर्यटन मोड: वास्तविक POI आधारित स्वचालित रूटिंग", "कस्टम GPS ड्रिफ्ट रेडियस + शहरी कैन्यन प्रभाव", "उच्च अपडेट दर (15 / 20 / 30 Hz)",
-        "पूर्ण एनालिटिक्स इतिहास", "GPX निर्यात + HTML रिपोर्ट", "LAN मल्टी-डिवाइस सिंक", "Google Fit / Health स्टेप सिंक",
-        "असीमित ऑफ़लाइन मानचित्र डाउनलोड", "सभी भविष्य की सुविधाओं तक जल्द पहुंच",
+        "पूरी तरह विज्ञापन-मुक्त",
+        "AI मार्ग विज्ञापन-मुक्त (फ्री: हर 3 उपयोग पर एक विज्ञापन)",
+        "Premium AI मोड: चलना / ड्राइविंग / साइकिल चलाना / जॉगिंग / स्थल यात्रा",
+        "स्थल यात्रा: वास्तविक POI के साथ स्वचालित मार्ग",
+        "कस्टम GPS ड्रिफ्ट त्रिज्या + शहरी घाटी प्रभाव",
+        "उच्च अपडेट दर (15 / 20 / 30 Hz)",
+        "पूर्ण Analytics इतिहास (फ्री: केवल 7 दिन)",
+        "Analytics HTML रिपोर्ट निर्यात",
+        "GPX मार्ग निर्यात",
+        "LAN मल्टी-डिवाइस सिंक",
+        "Health Connect कदम सिंक",
+        "असीमित ऑफ़लाइन मानचित्र डाउनलोड",
+        "स्ट्रीट स्वीप मोड",
+        "सभी भविष्य की सुविधाओं तक शीघ्र पहुंच",
       ],
       cta: "Pro में अपग्रेड करें",
     },
@@ -904,16 +1060,20 @@ hi: {
       { q: "क्या मैं अपने खुद के रूट आयात कर सकता हूं?", a: "हां। आप GPX फ़ाइलें आयात कर सकते हैं (Strava, Garmin एक्सपोर्ट के साथ संगत), मानचित्र पर रूट बना सकते हैं, या निर्देशांक सूची पेस्ट कर सकते हैं।" },
       { q: "फ्री और Pro वर्ज़न में क्या अंतर है?", a: "फ्री वर्ज़न में मुख्य सिमुलेशन और AI रूट सुविधाएं (कुछ विज्ञापनों सहित) मिलती हैं। Pro में बिना विज्ञापन अनुभव, प्रीमियम AI व्यवहार, उच्च अपडेट दर, LAN सिंक, Google Fit एकीकरण और ऑफ़लाइन मानचित्र जैसी सुविधाएं अनलॉक होती हैं।" },
       { q: "क्या मैं कभी भी सब्सक्रिप्शन रद्द कर सकता हूं?", a: "हां। Pro सब्सक्रिप्शन को Google Play खाते से कभी भी रद्द किया जा सकता है, बिना किसी दीर्घकालिक प्रतिबद्धता के।" },
+      { q: "क्या सिमुलेशन के दौरान पेडोमीटर ऐप कदम गिनते रहेंगे?", a: "हाँ। वास्तविक कदम मोड चालू करने पर केवल GPS प्रदाता सिमुलेट होता है, इसलिए फ़ोन का स्टेप सेंसर सामान्य रूप से काम करता है और पेडोमीटर ऐप आपके वास्तव में चले गए कदम दर्ज करते हैं।" },
+      { q: "क्या एकमुश्त भुगतान वाला विकल्प है?", a: "हाँ। मासिक और वार्षिक सदस्यता के अलावा USD $49.99 का लाइफटाइम प्लान भी है — एक बार भुगतान करें और सभी Pro सुविधाएँ हमेशा के लिए पाएँ।" },
     ],
   },
   whatsNew: {
     title: "नया क्या है",
     subtitle: "लगातार सुधार हो रहा है — यहां कुछ हालिया मुख्य बदलाव हैं",
     items: [
-      "AI रूट जनरेशन के बाद अब सिमुलेशन शुरू किए बिना ही मानचित्र पर तुरंत पूर्वावलोकन",
-      "सुविधाएं जल्दी खोजने के लिए 'अधिक सुविधाएं' मेनू को फिर से व्यवस्थित किया गया",
-      "पहली बार के ट्यूटोरियल को 9 मुख्य चरणों में सरल किया गया",
-      "पसंदीदा मार्कर में 3 नई श्रेणियां जोड़ी गईं: जिम, सप्लाई स्टेशन, जीवाश्म",
+      { text: "कोई पता या स्थान खोजकर टेलीपोर्ट करें, हाल के टेलीपोर्ट इतिहास के साथ", soon: true },
+      { text: "लूप मोड: शुरू से दोहराएँ या उसी मार्ग पर आगे-पीछे, लूप संख्या तय करें", soon: true },
+      { text: "स्वाभाविक गति उतार-चढ़ाव; सिमुलेशन के दौरान गति बदलना अब तुरंत लागू होता है", soon: true },
+      "वास्तविक कदम मोड: सिमुलेशन के दौरान भी पेडोमीटर ऐप कदम गिनते हैं",
+      "Pro: कदम Health Connect से सिंक करें, प्रारंभिक सेटअप में अनुमति गाइड के साथ",
+      "पसंदीदा सहेजने की सीमा हटाई गई, मार्ग संपादक लेआउट ठीक किया गया",
     ],
   },
   related: {
@@ -943,6 +1103,7 @@ ar: {
   features: {
     title: "الميزات الأساسية",
     subtitle: "مصمم لاختبارات ضمان الجودة ومحاكاة نظم المعلومات الجغرافية والتحقق من التطوير",
+    soon: "قريبًا",
     items: [
       { title: "توليد المسارات بالذكاء الاصطناعي", desc: "حدد المسافة ونمط السلوك، ليقوم الذكاء الاصطناعي بتوليد مسارات واقعية للتنقل أو المشي أو الجري أو السياحة، مع خيارات اتباع الطرق أو المسارات الدائرية." },
       { title: "محرك انحراف GPS", desc: "يحاكي تأثير الوادي الحضري وتذبذب الإشارة وأخطاء الدقة لإعادة إنتاج ضوضاء GPS الواقعية." },
@@ -951,7 +1112,11 @@ ar: {
       { title: "خرائط بدون اتصال", desc: "قم بتنزيل بلاطات الخريطة للاستخدام دون اتصال، لتخطيط المحاكاة وتشغيلها حتى بدون شبكة." },
       { title: "لوحة التحليلات", desc: "تسجيل كامل لمسار وسرعة واستهلاك البطارية لكل محاكاة، مع إمكانية التصدير كتقارير HTML وملفات GPX." },
       { title: "مزامنة عبر الشبكة المحلية", desc: "زامن موقع GPS بين عدة أجهزة عبر الشبكة المحلية، مثالي للاختبارات المنسقة على أجهزة متعددة." },
-      { title: "واجهة بـ 10 لغات", desc: "تدعم الواجهة الصينية والإنجليزية واليابانية والكورية والإسبانية والبرتغالية والهندية والعربية والإيطالية والتايلاندية." },
+      { title: "البحث عن مكان والانتقال إليه", desc: "ابحث عن أي عنوان أو اسم مكان وانتقل إليه فورًا. تُحفظ عمليات الانتقال الأخيرة لتعود إليها بلمسة واحدة.", soon: true },
+      { title: "العلامات المفضلة", desc: "اضغط مطولًا على الخريطة لحفظ الأماكن، ونظّمها حسب الفئة دون حد أقصى، وانتقل إليها من اللوحة العائمة." },
+      { title: "التكرار والسرعة الطبيعية", desc: "أعد تشغيل المسار من البداية أو ذهابًا وإيابًا على الطريق نفسه مع تحديد عدد مرات التكرار. يمنح التذبذب الطبيعي في السرعة حركة أقرب إلى الإنسان.", soon: true },
+      { title: "عدّ الخطوات ومزامنة الصحة", desc: "يتيح وضع الخطوات الحقيقية لتطبيقات عدّ الخطوات مواصلة التسجيل أثناء المحاكاة، ويزامن Pro الخطوات مع Health Connect." },
+      { title: "وضع تغطية الشوارع", desc: "يخطط تلقائيًا لمسار يغطي جميع الشوارع في نطاق محدد، مثالي لاختبارات QA واسعة مثل تطبيقات التوصيل وطلب السيارات (Pro)." },
     ],
   },
   how: {
@@ -994,16 +1159,27 @@ ar: {
     subtitle: "ابدأ مجانًا وقم بالترقية عند الحاجة",
     free: {
       name: "مجاني", price: "$0", note: "مجاني للأبد",
-      items: ["توليد مسارات أساسي بالذكاء الاصطناعي (مع إعلانات أحيانًا)", "انحراف GPS أساسي", "سجل تحليلات لمدة 7 أيام", "رسم المسارات / استيراد وتصدير GPX"],
+      items: ["إنشاء مسارات أساسي بالذكاء الاصطناعي (مع إعلانات)", "انحراف GPS أساسي", "سجل Analytics لمدة 7 أيام", "رسم المسارات / استيراد GPX", "علامات مفضلة (غير محدودة)", "وضع الخطوات الحقيقية"],
       cta: "نزّل الآن",
     },
     pro: {
       name: "Pro", monthly: "1.99 دولار / شهريًا", yearly: "12.00 دولار / سنويًا", badge: "الأكثر شيوعًا",
+      lifetime: "مدى الحياة USD $49.99 (دفعة واحدة)",
       items: [
-        "التطبيق بالكامل بدون إعلانات", "مسارات الذكاء الاصطناعي بدون إعلانات", "أنماط سلوك Premium: مشي / قيادة / دراجة / جري / سياحة",
-        "وضع السياحة: توجيه تلقائي بناءً على نقاط اهتمام حقيقية", "نصف قطر انحراف GPS قابل للتخصيص + تأثير الوادي الحضري", "معدل تحديث عالٍ (15 / 20 / 30 هرتز)",
-        "سجل تحليلات كامل", "تصدير GPX + تقارير HTML", "مزامنة عبر الشبكة المحلية", "مزامنة خطوات Google Fit / Health",
-        "تنزيل خرائط بدون اتصال بلا حدود", "وصول مبكر لكل الميزات المستقبلية",
+        "خالٍ تمامًا من الإعلانات",
+        "مسارات ذكاء اصطناعي بدون إعلانات (المجاني: إعلان واحد كل 3 استخدامات)",
+        "أوضاع الذكاء الاصطناعي المتميزة: المشي / القيادة / ركوب الدراجة / الهرولة / جولة المعالم",
+        "جولة المعالم: مسار تلقائي عبر نقاط اهتمام حقيقية",
+        "نصف قطر انحراف GPS مخصص + تأثير الوادي الحضري",
+        "معدل تحديث عالٍ (15 / 20 / 30 هرتز)",
+        "سجل Analytics كامل (المجاني: 7 أيام فقط)",
+        "تصدير تقرير Analytics بصيغة HTML",
+        "تصدير مسار GPX",
+        "مزامنة متعددة الأجهزة عبر الشبكة المحلية",
+        "مزامنة عدد الخطوات مع Health Connect",
+        "تنزيلات غير محدودة لمناطق الخرائط غير المتصلة",
+        "وضع تغطية الشوارع",
+        "وصول مبكر لجميع الميزات المستقبلية",
       ],
       cta: "الترقية إلى Pro",
     },
@@ -1017,16 +1193,20 @@ ar: {
       { q: "هل يمكنني استيراد مساراتي الخاصة؟", a: "نعم، يمكنك استيراد ملفات GPX (متوافقة مع تصدير Strava وGarmin)، أو رسم المسارات على الخريطة، أو لصق قائمة إحداثيات." },
       { q: "ما الفرق بين النسخة المجانية ونسخة Pro؟", a: "توفر النسخة المجانية المحاكاة الأساسية وميزات المسارات بالذكاء الاصطناعي (مع إعلانات أحيانًا). تفتح نسخة Pro تجربة بلا إعلانات، وأنماط سلوك Premium، ومعدل تحديث أعلى، ومزامنة عبر الشبكة المحلية، وتكامل مع Google Fit، وخرائط بدون اتصال." },
       { q: "هل يمكنني إلغاء الاشتراك في أي وقت؟", a: "نعم، يمكن إلغاء اشتراك Pro في أي وقت من خلال حساب Google Play الخاص بك، دون أي التزام طويل الأمد." },
+      { q: "هل تواصل تطبيقات عدّ الخطوات تسجيل خطواتي أثناء المحاكاة؟", a: "نعم. عند تفعيل وضع الخطوات الحقيقية تتم محاكاة مزوّد GPS فقط، فيظل مستشعر الخطوات في هاتفك يعمل وتسجّل تطبيقات عدّ الخطوات الخطوات التي تمشيها فعلًا." },
+      { q: "هل يوجد خيار شراء لمرة واحدة؟", a: "نعم. إلى جانب الاشتراك الشهري والسنوي، تتوفر خطة مدى الحياة بسعر USD $49.99 — ادفع مرة واحدة واحتفظ بجميع ميزات Pro إلى الأبد." },
     ],
   },
   whatsNew: {
     title: "الجديد",
     subtitle: "تحسين مستمر — إليك بعض أبرز التحديثات الأخيرة",
     items: [
-      "أصبحت مسارات الذكاء الاصطناعي تُعرض كمعاينة على الخريطة فورًا دون الحاجة لبدء المحاكاة",
-      "إعادة تنظيم قائمة \"المزيد\" للعثور على الميزات بسرعة أكبر",
-      "تبسيط الجولة التعريفية الأولى إلى 9 خطوات أساسية",
-      "إضافة 3 فئات جديدة للعلامات المفضلة: صالة رياضية، محطة إمداد، أحفورة",
+      { text: "ابحث عن عنوان أو مكان وانتقل إليه، مع سجل لعمليات الانتقال الأخيرة", soon: true },
+      { text: "وضع التكرار: إعادة من البداية أو ذهابًا وإيابًا على المسار، مع تحديد عدد المرات", soon: true },
+      { text: "تذبذب طبيعي في السرعة، وتغيير السرعة أثناء المحاكاة يُطبَّق فورًا", soon: true },
+      "وضع الخطوات الحقيقية: تواصل تطبيقات عدّ الخطوات التسجيل أثناء المحاكاة",
+      "Pro: مزامنة الخطوات مع Health Connect مع دليل للأذونات في الإعداد الأولي",
+      "إلغاء الحد الأقصى للمفضلة وإصلاح تخطيط محرر المسارات",
     ],
   },
   related: {
@@ -1056,6 +1236,7 @@ th: {
   features: {
     title: "ฟีเจอร์หลัก",
     subtitle: "ออกแบบมาเพื่อการทดสอบ QA การจำลอง GIS และการตรวจสอบการพัฒนา",
+    soon: "เร็ว ๆ นี้",
     items: [
       { title: "สร้างเส้นทางด้วย AI", desc: "กำหนดระยะทางและรูปแบบพฤติกรรม AI จะสร้างเส้นทางที่สมจริงสำหรับการเดินทาง เดินเล่น วิ่ง หรือท่องเที่ยว พร้อมตัวเลือกเดินตามถนนหรือวนรอบ" },
       { title: "ระบบจำลองความคลาดเคลื่อน GPS", desc: "จำลองปรากฏการณ์ตึกสูงบดบังสัญญาณ ความสั่นไหวของสัญญาณ และความคลาดเคลื่อนความแม่นยำ เพื่อจำลองสัญญาณรบกวน GPS ในโลกจริง" },
@@ -1064,7 +1245,11 @@ th: {
       { title: "แผนที่ออฟไลน์", desc: "ดาวน์โหลดไทล์แผนที่เพื่อใช้งานแบบออฟไลน์ วางแผนและจำลองเส้นทางได้แม้ไม่มีเครือข่าย" },
       { title: "แดชบอร์ดวิเคราะห์ข้อมูล", desc: "บันทึกเส้นทาง ความเร็ว และการใช้แบตเตอรี่ของทุกการจำลองอย่างครบถ้วน ส่งออกเป็นรายงาน HTML และไฟล์ GPX ได้" },
       { title: "ซิงค์หลายอุปกรณ์ผ่าน LAN", desc: "ซิงค์ตำแหน่ง GPS ระหว่างหลายอุปกรณ์ผ่านเครือข่ายท้องถิ่น เหมาะสำหรับการทดสอบร่วมกันหลายเครื่อง" },
-      { title: "อินเทอร์เฟซ 10 ภาษา", desc: "รองรับภาษาจีน อังกฤษ ญี่ปุ่น เกาหลี สเปน โปรตุเกส ฮินดี อาหรับ อิตาลี และไทย รวม 10 ภาษา" },
+      { title: "ค้นหาสถานที่และวาร์ป", desc: "ค้นหาที่อยู่หรือชื่อสถานที่แล้ววาร์ปไปได้ทันที ระบบบันทึกประวัติการวาร์ปล่าสุดให้กลับไปได้ในแตะเดียว", soon: true },
+      { title: "หมุดรายการโปรด", desc: "กดค้างบนแผนที่เพื่อบันทึกสถานที่ จัดหมวดหมู่ได้ไม่จำกัด และวาร์ปจากแผงลอยได้" },
+      { title: "เล่นวนซ้ำและความเร็วแบบธรรมชาติ", desc: "เล่นเส้นทางซ้ำจากจุดเริ่มต้นหรือเดินกลับทางเดิมแบบไป-กลับ พร้อมกำหนดจำนวนรอบ ความเร็วที่แปรผันอย่างเป็นธรรมชาติทำให้การเคลื่อนที่เหมือนคนจริง", soon: true },
+      { title: "นับก้าวและซิงค์สุขภาพ", desc: "โหมดบันทึกก้าวจริงช่วยให้แอปนับก้าวยังนับต่อได้ระหว่างจำลอง Pro ซิงค์จำนวนก้าวกับ Health Connect" },
+      { title: "โหมดกวาดถนน", desc: "วางแผนเส้นทางที่ครอบคลุมทุกถนนในพื้นที่โดยอัตโนมัติ เหมาะกับการทดสอบ QA ขนาดใหญ่ เช่น แอปส่งอาหารหรือเรียกรถ (Pro)" },
     ],
   },
   how: {
@@ -1107,16 +1292,27 @@ th: {
     subtitle: "เริ่มต้นใช้งานฟรี อัปเกรดเมื่อต้องการเพิ่มเติม",
     free: {
       name: "ฟรี", price: "฿0", note: "ฟรีตลอดไป",
-      items: ["สร้างเส้นทางด้วย AI ขั้นพื้นฐาน (มีโฆษณาบ้าง)", "ระบบจำลองความคลาดเคลื่อน GPS พื้นฐาน", "ประวัติการวิเคราะห์ 7 วัน", "วาดเส้นทาง / นำเข้า-ส่งออก GPX"],
+      items: ["สร้างเส้นทาง AI พื้นฐาน (มีโฆษณา)", "การเลื่อนไหล GPS พื้นฐาน", "ประวัติ Analytics 7 วัน", "วาดเส้นทาง / นำเข้า GPX", "หมุดรายการโปรด (ไม่จำกัด)", "โหมดบันทึกก้าวจริง"],
       cta: "ดาวน์โหลดเลย",
     },
     pro: {
       name: "Pro", monthly: "USD $1.99 ต่อเดือน", yearly: "USD $12.00 ต่อปี", badge: "ยอดนิยม",
+      lifetime: "ตลอดชีพ USD $49.99 (จ่ายครั้งเดียว)",
       items: [
-        "ทั้งแอปไม่มีโฆษณา", "เส้นทาง AI ไม่มีโฆษณา", "พฤติกรรม AI ระดับพรีเมียม: เดิน / ขับรถ / ปั่นจักรยาน / วิ่งเหยาะ / ท่องเที่ยว",
-        "โหมดท่องเที่ยว: จัดเส้นทางอัตโนมัติจากสถานที่ POI จริง", "ปรับรัศมีความคลาดเคลื่อน GPS เอง + ปรากฏการณ์ตึกสูงบดบังสัญญาณ", "อัตราอัปเดตสูง (15 / 20 / 30 Hz)",
-        "ประวัติการวิเคราะห์แบบเต็ม", "ส่งออก GPX + รายงาน HTML", "ซิงค์หลายอุปกรณ์ผ่าน LAN", "ซิงค์จำนวนก้าวกับ Google Fit / Health",
-        "ดาวน์โหลดแผนที่ออฟไลน์ไม่จำกัด", "ใช้ฟีเจอร์ใหม่ในอนาคตก่อนใคร",
+        "ไม่มีโฆษณาเลย",
+        "เส้นทาง AI ไม่มีโฆษณา (ฟรี: ดูโฆษณาทุก 3 ครั้งที่ใช้งาน)",
+        "โหมด AI พรีเมียม: เดิน / ขับรถ / ปั่นจักรยาน / จ็อกกิ้ง / ทัวร์สถานที่",
+        "ทัวร์สถานที่: สร้างเส้นทางอัตโนมัติจาก POI จริง",
+        "กำหนดรัศมีการเลื่อนไหลของ GPS เอง + เอฟเฟกต์หุบเขาเมือง",
+        "อัตราอัปเดตสูง (15 / 20 / 30 Hz)",
+        "ประวัติ Analytics แบบเต็ม (ฟรี: เพียง 7 วัน)",
+        "ส่งออกรายงาน HTML ของ Analytics",
+        "ส่งออกเส้นทาง GPX",
+        "การซิงค์ LAN หลายอุปกรณ์",
+        "ซิงค์จำนวนก้าวกับ Health Connect",
+        "ดาวน์โหลดพื้นที่แผนที่ออฟไลน์ไม่จำกัด",
+        "โหมดกวาดถนน",
+        "เข้าถึงฟีเจอร์ใหม่ในอนาคตก่อนใคร",
       ],
       cta: "อัปเกรดเป็น Pro",
     },
@@ -1130,16 +1326,20 @@ th: {
       { q: "สามารถนำเข้าเส้นทางของตัวเองได้ไหม", a: "ได้ รองรับการนำเข้าไฟล์ GPX (ใช้ร่วมกับไฟล์ส่งออกจาก Strava และ Garmin ได้) วาดเส้นทางบนแผนที่ หรือวางรายการพิกัดได้โดยตรง" },
       { q: "เวอร์ชันฟรีกับ Pro ต่างกันอย่างไร", a: "เวอร์ชันฟรีใช้งานการจำลองหลักและฟีเจอร์เส้นทาง AI ได้ (มีโฆษณาบ้าง) ส่วน Pro ปลดล็อกประสบการณ์ไม่มีโฆษณา พฤติกรรม AI ระดับพรีเมียม อัตราอัปเดตที่สูงขึ้น การซิงค์ผ่าน LAN การเชื่อมต่อ Google Fit และแผนที่ออฟไลน์" },
       { q: "ยกเลิกการสมัครสมาชิกได้ตลอดเวลาไหม", a: "ได้ สามารถยกเลิกการสมัครสมาชิก Pro ได้ตลอดเวลาผ่านบัญชี Google Play ของคุณ โดยไม่มีข้อผูกมัด" },
+      { q: "ระหว่างจำลอง แอปนับก้าวยังบันทึกก้าวอยู่ไหม?", a: "ได้ เมื่อเปิดโหมดบันทึกก้าวจริง ระบบจะจำลองเฉพาะผู้ให้บริการ GPS เซ็นเซอร์นับก้าวของโทรศัพท์จึงทำงานตามปกติ และแอปนับก้าวจะบันทึกก้าวที่คุณเดินจริง" },
+      { q: "มีแบบจ่ายครั้งเดียวไหม?", a: "มี นอกจากแบบรายเดือนและรายปี ยังมีแผนตลอดชีพราคา USD $49.99 จ่ายครั้งเดียวใช้ฟีเจอร์ Pro ทั้งหมดได้ตลอดไป" },
     ],
   },
   whatsNew: {
     title: "อัปเดตล่าสุด",
     subtitle: "ปรับปรุงอย่างต่อเนื่อง นี่คือไฮไลต์ล่าสุด",
     items: [
-      "เส้นทางที่สร้างด้วย AI แสดงตัวอย่างบนแผนที่ได้ทันที ไม่ต้องรอเริ่มจำลอง",
-      "จัดหมวดหมู่เมนู \"เพิ่มเติม\" ใหม่ ให้หาฟีเจอร์ได้เร็วขึ้น",
-      "ปรับทัวร์แนะนำครั้งแรกให้เหลือ 9 ขั้นตอนหลัก",
-      "เพิ่มหมวดหมู่หมุดโปรด 3 หมวดใหม่: ยิม, จุดเสบียง, ฟอสซิล",
+      { text: "ค้นหาที่อยู่หรือชื่อสถานที่แล้ววาร์ป พร้อมประวัติการวาร์ปล่าสุด", soon: true },
+      { text: "โหมดวนซ้ำ: เริ่มใหม่หรือไป-กลับตามเส้นทาง พร้อมกำหนดจำนวนรอบ", soon: true },
+      { text: "ความเร็วแปรผันแบบธรรมชาติ และการปรับความเร็วระหว่างจำลองมีผลทันที", soon: true },
+      "โหมดบันทึกก้าวจริง: แอปนับก้าวยังนับต่อได้ระหว่างจำลอง",
+      "Pro: ซิงค์ก้าวกับ Health Connect พร้อมคำแนะนำสิทธิ์ในการตั้งค่าครั้งแรก",
+      "ยกเลิกขีดจำกัดจำนวนรายการโปรด และแก้เลย์เอาต์ตัวแก้ไขเส้นทาง",
     ],
   },
   related: {
@@ -1198,6 +1398,7 @@ function renderLang(lang) {
   t.features.items.forEach((item, i) => {
     const card = el("div", "card");
     card.appendChild(el("div", "card-icon", FEATURE_ICONS[i] || "★"));
+    if (item.soon) card.appendChild(el("span", "soon-badge", t.features.soon));
     card.appendChild(el("h3", null, item.title));
     card.appendChild(el("p", null, item.desc));
     fg.appendChild(card);
@@ -1288,6 +1489,7 @@ function renderLang(lang) {
   proCard.appendChild(el("div", "plan-name", t.pricing.pro.name));
   proCard.appendChild(el("div", "plan-price", t.pricing.pro.yearly));
   proCard.appendChild(el("div", "plan-note", t.pricing.pro.monthly));
+  proCard.appendChild(el("div", "plan-note", t.pricing.pro.lifetime));
   const proUl = el("ul");
   t.pricing.pro.items.forEach((i) => proUl.appendChild(el("li", null, i)));
   proCard.appendChild(proUl);
@@ -1315,7 +1517,11 @@ function renderLang(lang) {
   document.getElementById("whatsNewSubtitle").textContent = t.whatsNew.subtitle;
   const wn = document.getElementById("whatsNewList");
   wn.innerHTML = "";
-  t.whatsNew.items.forEach((txt) => wn.appendChild(el("li", null, txt)));
+  t.whatsNew.items.forEach((item) => {
+    const li = el("li", null, typeof item === "string" ? item : item.text);
+    if (item.soon) li.prepend(el("span", "soon-badge", t.features.soon));
+    wn.appendChild(li);
+  });
 
   // related
   document.getElementById("relatedTitle").textContent = t.related.title;
